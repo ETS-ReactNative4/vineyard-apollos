@@ -2,7 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
-target 'apolloschurchapp' do
+target 'vineyardcincinnati' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -12,7 +12,7 @@ target 'apolloschurchapp' do
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
 
-  target 'apolloschurchappTests' do
+  target 'vineyardcincinnatiTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -39,10 +39,10 @@ target 'apolloschurchapp' do
   end
 end
 
-target 'apolloschurchapp-tvOS' do
-  # Pods for apolloschurchapp-tvOS
+target 'vineyardcincinnati-tvOS' do
+  # Pods for vineyardcincinnati-tvOS
 
-  target 'apolloschurchapp-tvOSTests' do
+  target 'vineyardcincinnati-tvOSTests' do
     inherit! :complete
     # Pods for testing
   end

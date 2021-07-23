@@ -29,6 +29,7 @@ ApollosConfig.loadJs({
     `${ApollosConfig.ROCK.URL}/api/RestControllers?$select=Name`,
     { headers: { 'Authorization-Token': ApollosConfig.ROCK.API_TOKEN } }
   );
+
   const hasPlugin = (await res.json())
     .map(({ Name }) => Name)
     .includes('Apollos');
