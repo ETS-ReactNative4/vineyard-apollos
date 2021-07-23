@@ -17,6 +17,7 @@
     "node": "12"
   },
   "dependencies": {
+    "@apollosproject/bugsnag": "^2.27.2",
     "@apollosproject/config": "^2.27.2",
     "@apollosproject/data-connector-algolia-search": "^2.27.2",
     "@apollosproject/data-connector-analytics": "^2.27.2",
