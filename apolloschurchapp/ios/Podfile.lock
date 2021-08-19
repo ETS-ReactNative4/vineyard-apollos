@@ -1,4 +1,8 @@
 PODS:
+  - Amplitude (8.2.0)
+  - amplitude-react-native (2.3.3):
+    - Amplitude (= 8.2.0)
+    - React-Core
   - AstronomerAnalytics (3.6.9)
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
@@ -395,6 +399,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
+  - "amplitude-react-native (from `../node_modules/@amplitude/react-native`)"
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -477,6 +482,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Amplitude
     - AstronomerAnalytics
     - boost-for-react-native
     - CocoaAsyncSocket
@@ -493,6 +499,8 @@ SPEC REPOS:
     - YogaKit
 
 EXTERNAL SOURCES:
+  amplitude-react-native:
+    :path: "../node_modules/@amplitude/react-native"
   BVLinearGradient:
     :path: "../node_modules/react-native-linear-gradient"
   DoubleConversion:
@@ -609,6 +617,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Amplitude: 263118b9e691e73a1c864b05bb08a3aff3636d16
+  amplitude-react-native: 9369759dc6d01590aeb6261f714d53beaebc7e6f
   AstronomerAnalytics: 36f48678a387e41481650edd6247c6c95d994131
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
