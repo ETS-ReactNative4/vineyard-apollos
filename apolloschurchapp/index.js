@@ -21,4 +21,4 @@ YellowBox.ignoreWarnings([
   'Module RCTImageLoader',
 ]);
 
-AppRegistry.registerComponent('vineyardcincinnati', () => App);
+AppRegistry.registerComponent('Vineyard', () => App);
