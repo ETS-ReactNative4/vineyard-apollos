@@ -62,6 +62,7 @@ const apolloServer = new ApolloServer({
     },
   },
   plugins: [new BugsnagPlugin()],
+  uploads: false,
   ...cacheOptions,
 });
 
