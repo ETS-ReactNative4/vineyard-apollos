@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'react-native';
+// import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -12,20 +12,13 @@ import {
 import { useApolloClient } from '@apollo/client';
 import { createFeatureFeedTab } from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
-import Connect from './connect';
+// import Connect from './connect';
 import tabBarIcon from './tabBarIcon';
 
-const HeaderLogo = withTheme(({ theme }) => ({
-  style: {
-    height: theme.sizing.baseUnit * 2.5,
-    width: '70%',
-    resizeMode: 'contain',
-  },
-  source:
-    theme.type === 'light'
-      ? require('./wordmark.png')
-      : require('./wordmark.dark.png'),
-}))(Image);
+const HeaderLogo = withTheme(() => ({
+  size: 24,
+  name: 'brand-icon',
+}))(Icon);
 
 const SearchIcon = withTheme(({ theme: { colors, sizing: { baseUnit } } }) => ({
   name: 'search',
@@ -54,26 +47,34 @@ const HomeTab = createFeatureFeedTab({
   screenOptions: {
     headerHideShadow: true,
     headerCenter: HeaderCenter,
-    headerRight: HeaderRight,
     headerLargeTitle: false,
   },
   tabName: 'Home',
   feedName: 'HOME',
 });
 
-const ReadTab = createFeatureFeedTab({
-  tabName: 'Read',
+const ReadyTab = createFeatureFeedTab({
+  tabName: 'Be Ready',
   feedName: 'READ',
 });
 
-const WatchTab = createFeatureFeedTab({
-  tabName: 'Watch',
+const SetTab = createFeatureFeedTab({
+  tabName: 'Get Set',
   feedName: 'WATCH',
 });
 
-const PrayTab = createFeatureFeedTab({
-  tabName: 'Pray',
+const GoTab = createFeatureFeedTab({
+  screenOptions: {
+    headerRight: HeaderRight,
+  },
+  tabName: 'Go Serve',
   feedName: 'PRAY',
+});
+
+// This is not hooked up to the schema yet
+const StoriesTab = createFeatureFeedTab({
+  tabName: 'Stories',
+  // feedName: 'STORIES',
 });
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -98,27 +99,27 @@ const TabNavigator = () => {
       <Screen
         name="Home"
         component={HomeTab}
-        options={{ tabBarIcon: tabBarIcon('home') }}
+        options={{ tabBarIcon: tabBarIcon('house') }}
       />
       <Screen
-        name="Read"
-        component={ReadTab}
-        options={{ tabBarIcon: tabBarIcon('sections') }}
+        name="Ready"
+        component={ReadyTab}
+        options={{ tabBarIcon: tabBarIcon('ready') }}
       />
       <Screen
-        name="Watch"
-        component={WatchTab}
-        options={{ tabBarIcon: tabBarIcon('video') }}
+        name="Set"
+        component={SetTab}
+        options={{ tabBarIcon: tabBarIcon('set') }}
       />
       <Screen
-        name="Pray"
-        component={PrayTab}
-        options={{ tabBarIcon: tabBarIcon('like') }}
+        name="Go"
+        component={GoTab}
+        options={{ tabBarIcon: tabBarIcon('go') }}
       />
       <Screen
-        name="Connect"
-        component={Connect}
-        options={{ tabBarIcon: tabBarIcon('profile') }}
+        name="Stories"
+        component={StoriesTab}
+        options={{ tabBarIcon: tabBarIcon('chat-dots') }}
       />
     </Navigator>
   );
