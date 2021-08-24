@@ -122,7 +122,7 @@ TABS:
     - algorithms: [DAILY_PRAYER]
       isCard: false
       type: PrayerList
-      title: Daily Prayer
+      title: Pray For Others
 
   READ: # Ready
     - algorithms:
