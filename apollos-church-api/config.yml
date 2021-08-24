@@ -102,16 +102,15 @@ TABS:
       - type: CONTENT_FEED
         arguments:
           channelIds:
-            - 6
+            - 2055
       type: HeroList
-      primaryAction:
-        # Right now, you hardcode exactly what GraphQL should return.
-        # Long term, we hope to have a more sophisticated mechanism for driving this field
-        action: OPEN_NODE
-        title: 'Read More'
-        relatedNode:
-          __typename: UniversalContentItem
-          id: 21
+    - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 2056
+          limit: 1
+      type: HeroList
     - algorithms: [DAILY_PRAYER]
       isCard: false
       type: PrayerList
@@ -122,110 +121,41 @@ TABS:
       - type: CONTENT_FEED
         arguments:
           channelIds:
-            - 6
+            - 2055
       type: HeroList
-      primaryAction:
-        # Right now, you hardcode exactly what GraphQL should return.
-        # Long term, we hope to have a more sophisticated mechanism for driving this field
-        action: OPEN_NODE
-        title: 'Read More'
-        relatedNode:
-          __typename: UniversalContentItem
-          id: 21
     - algorithms:
         - type: CONTENT_FEED
           arguments:
             channelIds:
-              - 7
+              - 2054
             limit: 3
       type: HorizontalCardList
       subtitle: Devotionals
-      primaryAction:
-        action: OPEN_CHANNEL
-        title: 'Read More'
-        relatedNode:
-          __typename: ContentChannel
-          id: 7
-          name: Devotionals
 
   WATCH: # Set
     - algorithms:
-      - type: CAMPAIGN_ITEMS
-        channelIds:
-          - 9
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 2056
+          limit: 1
       type: HeroList
-      isFeatured: true
-      subtitle: Featured
+      subtitle: Daily Challenge
     - algorithms:
-        - type: LATEST_SERIES_CHILDREN
-          arguments:
-            channelId: 4
-      type: HeroList
-      title: Catch up
-      subtitle: Latest Series
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 4
-      type: VerticalCardList
-      subtitle: All series
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 3
-            limit: 3
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 2056
       type: HorizontalCardList
-      subtitle: Sermons
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 5
-            limit: 3
-      type: HorizontalCardList
-      subtitle: Podcasts
-      primaryAction:
-        action: OPEN_CHANNEL
-        title: 'Read More'
-        relatedNode:
-          __typename: ContentChannel
-          id: 5
-          name: Podcasts
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 6
-            limit: 3
-      type: HorizontalCardList
-      title: Videos
-      primaryAction:
-        action: OPEN_CHANNEL
-        title: 'Read More'
-        relatedNode:
-          __typename: ContentChannel
-          id: 6
-          name: Videos
-    - algorithms:
-        - type: CONTENT_FEED
-          arguments:
-            channelIds:
-              - 8
-            limit: 3
-      type: HorizontalCardList
-      subtitle: Something Else
+      subtitle: Your Completed Challenges
 
   PRAY: # Go
     - algorithms:
         - type: CONTENT_FEED
           arguments:
             channelIds:
-              - 8
-            limit: 4
+              - 2057
       type: VerticalCardList
-      subtitle: Something Else
 
   # STORIES:
   #   - algorithms:
