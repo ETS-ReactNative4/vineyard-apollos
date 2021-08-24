@@ -93,6 +93,7 @@ ROCK_MAPPINGS:
     - 2055 # Be Ready Messages
     - 2056 # Get Set Challenges
     - 2057 # Service Opportunities
+    - 2060 # Go Serve Mission
 
   SERMON_CHANNEL_ID: 5
 
@@ -115,7 +116,7 @@ TABS:
       - type: CONTENT_FEED
         arguments:
           channelIds:
-            - 2057
+            - 2060
           limit: 1
       type: HeroList
     - algorithms: [DAILY_PRAYER]
