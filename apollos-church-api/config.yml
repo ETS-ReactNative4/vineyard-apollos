@@ -84,10 +84,15 @@ ROCK_MAPPINGS:
     PersonaId: 210
 
   ALL_CONTENT_CHANNELS:
-    - 3
-    - 5
-    - 6
-    - 8
+    - 3 # Stories & Blog
+    - 5 # Church Header Links
+    - 6 # Home Page: Ministries Grid
+    - 8 # Home Page: Featured Grid
+    - 2021 # Healing Center: Featured Grid
+    - 2054 # Be Ready Series
+    - 2055 # Be Ready Messages
+    - 2056 # Get Set Challenges
+    - 2057 # Service Opportunities
 
   SERMON_CHANNEL_ID: 5
 
