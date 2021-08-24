@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useColorScheme } from 'react-native';
+import {
+  getFocusedRouteNameFromRoute,
+  useNavigation,
+} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationService,
@@ -79,7 +82,7 @@ const StoriesTab = createFeatureFeedTab({
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const TabNavigator = ({ route }) => {
   const client = useApolloClient();
   // this is only used by the tab loaded first
   // if there is a new version of the onboarding flow,
@@ -94,8 +97,30 @@ const TabNavigator = () => {
     },
     [client]
   );
+
+  let activeColor;
+  const colorScheme = useColorScheme();
+
+  switch (getFocusedRouteNameFromRoute(route)) {
+    case 'Ready':
+      activeColor = 'rgba(79, 110, 174, 1)';
+      break;
+    case 'Set':
+      activeColor = 'rgba(95, 192, 194, 1)';
+      break;
+    case 'Go':
+      activeColor = 'rgba(250, 101, 85, 1)';
+      break;
+    default:
+      if (colorScheme === 'light') {
+        activeColor = '#000000';
+      } else {
+        activeColor = '#ffffff';
+      }
+  }
+
   return (
-    <Navigator lazy>
+    <Navigator lazy tabBarOptions={{ activeTintColor: activeColor }}>
       <Screen
         name="Home"
         component={HomeTab}
