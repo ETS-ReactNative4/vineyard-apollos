@@ -111,6 +111,13 @@ TABS:
             - 2056
           limit: 1
       type: HeroList
+    - algorithms:
+      - type: CONTENT_FEED
+        arguments:
+          channelIds:
+            - 2057
+          limit: 1
+      type: HeroList
     - algorithms: [DAILY_PRAYER]
       isCard: false
       type: PrayerList
