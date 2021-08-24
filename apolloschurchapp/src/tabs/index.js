@@ -16,6 +16,7 @@ import { useApolloClient } from '@apollo/client';
 import { createFeatureFeedTab } from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
 // import Connect from './connect';
+import theme from '../theme';
 import tabBarIcon from './tabBarIcon';
 
 const HeaderLogo = withTheme(() => ({
@@ -26,7 +27,7 @@ const HeaderLogo = withTheme(() => ({
 const SearchIcon = withTheme(({ theme: { colors, sizing: { baseUnit } } }) => ({
   name: 'search',
   size: baseUnit * 2,
-  fill: colors.primary,
+  fill: colors.tertiary,
 }))(Icon);
 
 const SearchButton = ({ onPress }) => (
@@ -59,11 +60,17 @@ const HomeTab = createFeatureFeedTab({
 const ReadyTab = createFeatureFeedTab({
   tabName: 'Be Ready',
   feedName: 'READ',
+  options: {
+    headerTintColor: theme.colors.primary,
+  },
 });
 
 const SetTab = createFeatureFeedTab({
   tabName: 'Get Set',
   feedName: 'WATCH',
+  options: {
+    headerTintColor: theme.colors.secondary,
+  },
 });
 
 const GoTab = createFeatureFeedTab({
@@ -72,6 +79,9 @@ const GoTab = createFeatureFeedTab({
   },
   tabName: 'Go Serve',
   feedName: 'PRAY',
+  options: {
+    headerTintColor: theme.colors.tertiary,
+  },
 });
 
 // This is not hooked up to the schema yet
@@ -103,13 +113,13 @@ const TabNavigator = ({ route }) => {
 
   switch (getFocusedRouteNameFromRoute(route)) {
     case 'Ready':
-      activeColor = 'rgba(79, 110, 174, 1)';
+      activeColor = theme.colors.primary;
       break;
     case 'Set':
-      activeColor = 'rgba(95, 192, 194, 1)';
+      activeColor = theme.colors.secondary;
       break;
     case 'Go':
-      activeColor = 'rgba(250, 101, 85, 1)';
+      activeColor = theme.colors.tertiary;
       break;
     default:
       if (colorScheme === 'light') {
