@@ -70,6 +70,7 @@ jobs:
       - run: cp .env.shared .env
 
       - name: Install Dependencies
+        run: yarn config set network-timeout 300000
         run: yarn
 
       # required to build
