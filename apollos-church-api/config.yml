@@ -120,7 +120,7 @@ TABS:
           limit: 1
       type: HeroList
     - algorithms: [DAILY_PRAYER]
-      isCard: false
+      isCard: true
       type: PrayerList
       title: Pray For Others
 
