@@ -2,7 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
-target 'Vineyard' do
+target 'GoDoGood' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -12,7 +12,7 @@ target 'Vineyard' do
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
   pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
 
-  target 'VineyardTests' do
+  target 'GoDoGoodTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -39,10 +39,10 @@ target 'Vineyard' do
   end
 end
 
-target 'Vineyard-tvOS' do
-  # Pods for Vineyard-tvOS
+target 'GoDoGood-tvOS' do
+  # Pods for GoDoGood-tvOS
 
-  target 'Vineyard-tvOSTests' do
+  target 'GoDoGood-tvOSTests' do
     inherit! :complete
     # Pods for testing
   end
