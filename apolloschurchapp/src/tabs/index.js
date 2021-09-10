@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useColorScheme } from 'react-native';
+import { View, useColorScheme } from 'react-native';
 import {
   getFocusedRouteNameFromRoute,
   useNavigation,
@@ -13,7 +13,10 @@ import {
   Touchable,
 } from '@apollosproject/ui-kit';
 import { useApolloClient } from '@apollo/client';
-import { createFeatureFeedTab } from '@apollosproject/ui-connected';
+import {
+  createFeatureFeedTab,
+  UserAvatarConnected,
+} from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
 // import Connect from './connect';
 import theme from '../theme';
@@ -40,17 +43,53 @@ SearchButton.propTypes = {
   onPress: PropTypes.func,
 };
 
+const Avatar = withTheme(({ theme: { sizing: { baseUnit } } }) => ({
+  size: 'small',
+  containerStyle: {
+    paddingBottom: baseUnit * 0.25,
+  },
+}))(UserAvatarConnected);
+
+const ProfileButton = ({ onPress }) => (
+  <Touchable onPress={onPress}>
+    <View>
+      <Avatar />
+    </View>
+  </Touchable>
+);
+
+ProfileButton.propTypes = {
+  onPress: PropTypes.func,
+};
+
+const HeaderLeft = () => {
+  const navigation = useNavigation();
+  return (
+    <ProfileButton
+      onPress={() => {
+        navigation.navigate('UserSettingsNavigator');
+      }}
+    />
+  );
+};
 const HeaderCenter = () => <HeaderLogo source={require('./wordmark.png')} />;
 const HeaderRight = () => {
   const navigation = useNavigation();
-  return <SearchButton onPress={() => navigation.navigate('Search')} />;
+  return (
+    <SearchButton
+      onPress={() => {
+        navigation.navigate('Search');
+      }}
+    />
+  );
 };
 
 // we nest stack inside of tabs so we can use all the fancy native header features
 const HomeTab = createFeatureFeedTab({
-  screenOptions: {
+  options: {
     headerHideShadow: true,
     headerCenter: HeaderCenter,
+    headerLeft: HeaderLeft,
     headerLargeTitle: false,
   },
   tabName: 'Home',
@@ -61,6 +100,7 @@ const ReadyTab = createFeatureFeedTab({
   tabName: 'Be Ready',
   feedName: 'READ',
   options: {
+    headerLeft: HeaderLeft,
     headerTintColor: theme.colors.primary,
   },
 });
@@ -69,25 +109,28 @@ const SetTab = createFeatureFeedTab({
   tabName: 'Get Set',
   feedName: 'WATCH',
   options: {
+    headerLeft: HeaderLeft,
     headerTintColor: theme.colors.secondary,
   },
 });
 
 const GoTab = createFeatureFeedTab({
-  screenOptions: {
+  options: {
+    headerLeft: HeaderLeft,
     headerRight: HeaderRight,
+    headerTintColor: theme.colors.tertiary,
   },
   tabName: 'Go Serve',
   feedName: 'PRAY',
-  options: {
-    headerTintColor: theme.colors.tertiary,
-  },
 });
 
 // This is not hooked up to the schema yet
 const StoriesTab = createFeatureFeedTab({
   tabName: 'Stories',
   // feedName: 'STORIES',
+  options: {
+    headerLeft: HeaderLeft,
+  },
 });
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -158,6 +201,10 @@ const TabNavigator = ({ route }) => {
       />
     </Navigator>
   );
+};
+
+TabNavigator.propTypes = {
+  route: PropTypes.string,
 };
 
 export default TabNavigator;

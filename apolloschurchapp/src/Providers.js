@@ -1,7 +1,6 @@
 import querystring from 'querystring';
 import React from 'react';
 import PropTypes from 'prop-types';
-import ApollosConfig from '@apollosproject/config';
 import { NavigationService } from '@apollosproject/ui-kit';
 import { AuthProvider } from '@apollosproject/ui-auth';
 import { AnalyticsProvider } from '@apollosproject/ui-analytics';
@@ -13,7 +12,7 @@ import {
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
 
 import { Amplitude } from '@amplitude/react-native';
-
+import ApollosConfig from '@apollosproject/config';
 import ClientProvider, { client } from './client';
 
 const amplitude = Amplitude.getInstance();
@@ -22,7 +21,6 @@ amplitude.init(ApollosConfig.AMPLITUDE_API_KEY);
 const AppProviders = (props) => (
   <ClientProvider {...props}>
     <NotificationsProvider
-      oneSignalKey={ApollosConfig.ONE_SIGNAL_KEY}
       // TODO deprecated prop
       navigate={NavigationService.navigate}
       handleExternalLink={(url) => {
