@@ -1,4 +1,4 @@
-package com.differential.apollos;
+package com.vineyard.apollosapp;
 
 import com.bugsnag.android.Bugsnag;
 import android.app.Application;

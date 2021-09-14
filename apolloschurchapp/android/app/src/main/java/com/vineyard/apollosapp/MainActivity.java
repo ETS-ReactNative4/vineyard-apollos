@@ -1,4 +1,4 @@
-package com.differential.apollos;
+package com.vineyard.apollosapp;
 import android.os.Bundle;
 import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactActivity;
