@@ -148,7 +148,7 @@ const UserSettings = () => {
                 <H6>Help & Feedback</H6>
               </StyledPaddedView>
               <TableView>
-                <Touchable
+                {/* <Touchable
                   onPress={() => {
                     openUrl('mailto:support@apollos.app');
                   }}
@@ -158,7 +158,7 @@ const UserSettings = () => {
                     <StyledCellIcon name="arrow-next" />
                   </Cell>
                 </Touchable>
-                <Divider />
+                <Divider /> */}
                 <Touchable
                   onPress={() => openUrl('https://apollosrock.newspring.cc/')}
                 >
