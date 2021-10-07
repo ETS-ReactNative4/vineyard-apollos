@@ -52,8 +52,9 @@ const colors = {
  * }
  * ```
  */
-// const overrides = {};
+const overrides = { ContentSingle: { autoComplete: false } };
 
 export default {
   colors,
+  overrides,
 };
