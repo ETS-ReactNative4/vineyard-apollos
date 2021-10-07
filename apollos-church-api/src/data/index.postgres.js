@@ -49,7 +49,7 @@ import {
   Person as PostgresPerson,
   Media as PostgresMedia,
   Feature as PostgresFeature,
-  ContentItem as PostgresContentItem,
+  // ContentItem as PostgresContentItem,
   ContentItemsConnection,
   ContentItemCategory,
   ActionAlgorithm as PostgresActionAlgorithm,
@@ -57,6 +57,7 @@ import {
 } from '@apollosproject/data-connector-postgres';
 
 import * as Theme from './theme';
+import * as PostgresContentItem from './ContentItem';
 
 // This modules ties together certain updates so they occurs in both Rock and Postgres.
 // Will be eliminated in the future through an enhancement to the Shovel
