@@ -16,7 +16,29 @@ const colors = {
 /* Base Typography sizing and fonts.
  * To control speicfic styles used on different type components (like H1, H2, etc), see "overrides"
  */
-// const typography = {};
+const typography = {
+  sans: {
+    regular: {
+      default: 'Nunito-Regular',
+      italic: 'Nunito-Italic',
+    },
+    medium: {
+      default: 'Nunito-SemiBold',
+      italic: 'Nunito-SemiBoldItalic',
+    },
+    bold: {
+      default: 'Nunito-Bold',
+      italic: 'Nunito-BoldItalic',
+    },
+    black: {
+      default: 'Nunito-Bold',
+      italic: 'Nunito-BoldItalic',
+    },
+  },
+  ui: {
+    regular: 'System',
+  },
+};
 
 /* Responsive breakpoints */
 // export const breakpoints = {};
@@ -57,4 +79,5 @@ const overrides = { ContentSingle: { autoComplete: false } };
 export default {
   colors,
   overrides,
+  typography,
 };
