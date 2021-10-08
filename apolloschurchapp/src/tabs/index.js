@@ -44,10 +44,7 @@ SearchButton.propTypes = {
 };
 
 const Avatar = withTheme(({ theme: { sizing: { baseUnit } } }) => ({
-  size: 'small',
-  containerStyle: {
-    paddingBottom: baseUnit * 0.25,
-  },
+  size: 'xsmall',
 }))(UserAvatarConnected);
 
 const ProfileButton = ({ onPress }) => (

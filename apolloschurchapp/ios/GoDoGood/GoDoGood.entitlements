@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.vineyard.apollosapp</string>
+		<string>group.com.vineyard.apollosapp.onesignal</string>
 	</array>
 </dict>
 </plist>
