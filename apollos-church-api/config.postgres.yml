@@ -104,6 +104,9 @@ TABS:
         arguments:
           channelIds:
             - 2055
+          limit: 1
+          subtitle: Be Ready
+          hasImage: false
       type: HeroList
     - algorithms:
       - type: CONTENT_FEED
@@ -111,6 +114,7 @@ TABS:
           channelIds:
             - 2056
           limit: 1
+          subtitle: Get Set
       type: HeroList
     - algorithms:
       - type: CONTENT_FEED
@@ -118,6 +122,7 @@ TABS:
           channelIds:
             - 2060
           limit: 1
+          subtitle: Go Serve
       type: HeroList
     - algorithms: [DAILY_PRAYER]
       isCard: true
