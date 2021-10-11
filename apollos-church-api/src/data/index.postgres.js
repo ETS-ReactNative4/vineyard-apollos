@@ -57,7 +57,8 @@ import {
 } from '@apollosproject/data-connector-postgres';
 
 import * as Theme from './theme';
-import * as PostgresActionAlgorithm from './ActionAlgorithms';
+import * as PostgresActionAlgorithm from './ActionAlgorithm';
+
 // This modules ties together certain updates so they occurs in both Rock and Postgres.
 // Will be eliminated in the future through an enhancement to the Shovel
 import {

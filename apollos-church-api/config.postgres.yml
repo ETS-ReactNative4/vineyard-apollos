@@ -155,10 +155,9 @@ TABS:
       type: HeroList
       subtitle: Daily Challenge
     - algorithms:
-      - type: CONTENT_FEED
+      - type: COMPLETED_CONTENT_FEED
         arguments:
-          channelIds:
-            - 2056
+          channelId: 1acff1cb-805b-4561-b5f7-ee136b0b39b4
       type: HorizontalCardList
       subtitle: Your Completed Challenges
 
