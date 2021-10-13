@@ -48,7 +48,7 @@ import {
   Campus,
   Person as PostgresPerson,
   Media as PostgresMedia,
-  Feature as PostgresFeature,
+  // Feature as PostgresFeature,
   ContentItem as PostgresContentItem,
   ContentItemsConnection,
   ContentItemCategory,
@@ -56,6 +56,7 @@ import {
   PrayerRequest as PostgresPrayerRequest,
 } from '@apollosproject/data-connector-postgres';
 
+import * as PostgresFeature from './Feature';
 import * as Theme from './theme';
 import * as PostgresActionAlgorithm from './ActionAlgorithm';
 
