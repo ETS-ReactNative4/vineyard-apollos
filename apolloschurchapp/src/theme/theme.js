@@ -1,3 +1,5 @@
+import React from 'react';
+import ContentNodeHeader from '../ui/ContentNodeHeader';
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
  overridden and/or customized here! */
 
@@ -74,7 +76,13 @@ const typography = {
  * }
  * ```
  */
-const overrides = { ContentSingle: { autoComplete: false } };
+const overrides = {
+  ContentSingle: { autoComplete: false },
+  'ui-connected.ContentNodeConnected': {
+    // eslint-disable-next-line react/display-name
+    HeaderComponent: () => (props) => <ContentNodeHeader {...props} />,
+  },
+};
 
 export default {
   colors,
