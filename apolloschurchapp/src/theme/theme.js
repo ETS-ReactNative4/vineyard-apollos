@@ -1,5 +1,7 @@
 import React from 'react';
+import { Text } from 'react-native';
 import ContentNodeHeader from '../ui/ContentNodeHeader';
+
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
  overridden and/or customized here! */
 
@@ -78,6 +80,30 @@ const typography = {
  */
 const overrides = {
   ContentSingle: { autoComplete: false },
+  'ui-auth.Entry': {
+    authTitleText: 'Have We Met?',
+    // eslint-disable-next-line react/display-name
+    promptText: `Sign In For A Personalized Experience That Helps You Grow And Show God's Love Beyond The Church Walls`,
+  },
+  'ui-onboarding.AskNotifications': {
+    // eslint-disable-next-line react/display-name
+    slideTitle: () => <Text>Can We Keep You Informed?</Text>,
+    // eslint-disable-next-line react/display-name
+    description: () => (
+      <Text>
+        We&apos;ll Let You Know When Important Things Are Happening And Keep You
+        In The Loop
+      </Text>
+    ),
+  },
+  'ui-onboarding.Follow': {
+    // eslint-disable-next-line react/display-name
+    slideTitle: () => <Text>Get Connected</Text>,
+    // eslint-disable-next-line react/display-name
+    description: () => (
+      <Text>Follow Others To Stay Connected To Our Community</Text>
+    ),
+  },
   'ui-connected.ContentNodeConnected': {
     // eslint-disable-next-line react/display-name
     HeaderComponent: () => (props) => <ContentNodeHeader {...props} />,
