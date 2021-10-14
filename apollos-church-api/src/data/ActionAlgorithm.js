@@ -6,6 +6,7 @@ class dataSource extends ActionAlgorithm.dataSource {
   ACTION_ALGORITHMS = {
     ...this.ACTION_ALGORITHMS,
     COMPLETED_CONTENT_FEED: this.completedContentFeedAlgorithm.bind(this),
+    SERIES_ITEM_IN_PROGRESS: this.seriesItemInProgressAlgorithm.bind(this),
   };
 
   async contentFeedAlgorithm({
@@ -32,10 +33,10 @@ class dataSource extends ActionAlgorithm.dataSource {
   }
 
   async completedContentFeedAlgorithm({ channelId = '' } = {}) {
-    this.cacheControl.setCacheHint({ scope: 'PRIVATE' });
     if (!channelId) return [];
 
-    const { Person, ContentItem } = this.context.dataSources;
+    const { Feature, Person, ContentItem } = this.context.dataSources;
+    Feature.setCacheHint({ scope: 'PRIVATE' });
 
     const personId = await Person.getCurrentPersonId();
 
@@ -57,6 +58,87 @@ class dataSource extends ActionAlgorithm.dataSource {
       action: 'READ_CONTENT',
       summary: item.summary,
     }));
+  }
+
+  async seriesItemInProgressAlgorithm({
+    subtitle = '',
+    categoryId,
+    emptyMessage = 'All caught up!',
+    hasImage = true,
+  } = {}) {
+    const { ContentItem, Feature } = this.context.dataSources;
+    Feature.setCacheHint({ scope: 'PRIVATE' });
+
+    const items = await ContentItem.sequelize.query(
+      `
+    WITH uncompleted_items AS (
+        SELECT
+            title,
+            parent_id
+        FROM
+            content_item c
+            LEFT JOIN interaction i ON c.id = i.node_id
+        WHERE
+            c.content_item_category_id = '${categoryId}'
+            AND (i.action IS NULL
+                OR i.action != 'COMPLETE')
+        ORDER BY
+            publish_at DESC
+        LIMIT 1
+    ),
+    series AS (
+        SELECT
+            c.id,
+            c.title
+        FROM
+            content_item c
+            JOIN uncompleted_items u ON c.id = u.parent_id
+    )
+    SELECT
+        c.id,
+        c.title,
+        c.apollos_id,
+        c.apollos_type,
+        c.cover_image_id,
+        c.summary,
+        s.title parent_name
+    FROM
+        content_item c
+        JOIN series s ON c.parent_id = s.id
+        LEFT JOIN interaction i ON c.id = i.node_id
+    WHERE
+        i.action IS NULL
+        OR i.action != 'COMPLETE'
+    ORDER BY
+        publish_at ASC
+    LIMIT 1;
+    `,
+      {
+        model: this.sequelize.models.contentItem,
+        mapToModel: true,
+      }
+    );
+
+    return items.length
+      ? items.map((item, i) => ({
+          id: `${item.id}${i}`,
+          title: item.title,
+          subtitle: subtitle || item.parentName,
+          relatedNode: item,
+          image: hasImage ? item.getCoverImage() : null,
+          action: 'READ_CONTENT',
+          summary: item.summary,
+        }))
+      : [
+          {
+            id: 'EmptyCard',
+            relatedNode: {
+              // __type: 'Message',
+              __typename: 'Message',
+              message: emptyMessage,
+            },
+          },
+        ];
   }
 }
 

@@ -100,10 +100,9 @@ ROCK_MAPPINGS:
 TABS:
   HOME:
     - algorithms:
-      - type: CONTENT_FEED
+      - type: SERIES_ITEM_IN_PROGRESS
         arguments:
-          channelIds:
-            - 2055
+          categoryId: 8edb84c2-063a-45bf-b92e-845745edb57a
           limit: 1
           subtitle: Be Ready
           hasImage: false
@@ -131,11 +130,10 @@ TABS:
 
   READ: # Ready
     - algorithms:
-      - type: CONTENT_FEED
+      - type: SERIES_ITEM_IN_PROGRESS
         arguments:
-          channelIds:
-            - 2055
-      type: HeroList
+          categoryId: 8edb84c2-063a-45bf-b92e-845745edb57a
+      type: VerticalCardList
     - algorithms:
         - type: CONTENT_FEED
           arguments:
