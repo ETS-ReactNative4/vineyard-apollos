@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
 import ContentNodeHeader from '../ui/ContentNodeHeader';
+import { ButtonLink } from '@apollosproject/ui-kit';
+import { safeHandleUrl } from '@apollosproject/ui-connected';
 
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
  overridden and/or customized here! */
@@ -84,6 +86,19 @@ const overrides = {
     authTitleText: 'Have We Met?',
     // eslint-disable-next-line react/display-name
     promptText: `Sign In For A Personalized Experience That Helps You Grow And Show God's Love Beyond The Church Walls`,
+    // eslint-disable-next-line react/display-name
+    additionalText: () => (
+      <Text>
+        By Clicking &quot;Next,&quot; You Accept Our{' '}
+        <ButtonLink
+          onPress={() =>
+            safeHandleUrl('https://www.vineyardcincinnati.com/privacy')
+          }
+        >
+          Privacy Policy And Terms Of Use.
+        </ButtonLink>
+      </Text>
+    ),
   },
   'ui-onboarding.AskNotifications': {
     // eslint-disable-next-line react/display-name

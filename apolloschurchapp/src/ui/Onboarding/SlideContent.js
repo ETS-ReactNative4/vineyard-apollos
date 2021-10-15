@@ -23,6 +23,7 @@ const BrandIcon = withTheme(
   ({ theme, icon }) => ({
     name: typeof icon === 'string' ? icon : 'brand-icon',
     size: theme.sizing.baseUnit * 12,
+    fill: theme.colors.text.primary,
   }),
   'ui-onboarding.Slide.SlideContent.BrandIcon'
 )(Icon);
@@ -36,7 +37,7 @@ const TitleWrapper = styled(
 
 const Title = styled(
   ({ theme }) => ({
-    color: theme.colors.black,
+    color: theme.colors.text.primary,
     textAlign: 'center',
   }),
   'ui-onboarding.Slide.SlideContent.Title'
