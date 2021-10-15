@@ -87,7 +87,7 @@ const overrides = {
     // eslint-disable-next-line react/display-name
     promptText: `Sign In For A Personalized Experience That Helps You Grow And Show God's Love Beyond The Church Walls`,
     // eslint-disable-next-line react/display-name
-    additionalText: () => (
+    footerComponent: () => (
       <Text>
         By Clicking &quot;Next,&quot; You Accept Our{' '}
         <ButtonLink
