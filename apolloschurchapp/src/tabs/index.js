@@ -83,11 +83,10 @@ const HeaderRight = () => {
   );
 };
 
+const fontStyles = { fontFamily: 'Nunito-Bold' };
+
 const HomeTabWithHeader = (props) => (
-  <>
-    <HomeTabHeader />
-    <DefaultTabComponent {...props} />
-  </>
+  <DefaultTabComponent {...props} ListHeaderComponent={HomeTabHeader} />
 );
 // we nest stack inside of tabs so we can use all the fancy native header features
 const HomeTab = createFeatureFeedTab({
@@ -108,6 +107,9 @@ const ReadyTab = createFeatureFeedTab({
   options: {
     headerLeft: HeaderLeft,
     headerTintColor: theme.colors.primary,
+    headerLargeTitleStyle: fontStyles,
+    headerBackTitleStyle: fontStyles,
+    headerTitleStyle: fontStyles,
   },
 });
 
@@ -117,6 +119,9 @@ const SetTab = createFeatureFeedTab({
   options: {
     headerLeft: HeaderLeft,
     headerTintColor: theme.colors.secondary,
+    headerLargeTitleStyle: fontStyles,
+    headerBackTitleStyle: fontStyles,
+    headerTitleStyle: fontStyles,
   },
 });
 
@@ -125,6 +130,9 @@ const GoTab = createFeatureFeedTab({
     headerLeft: HeaderLeft,
     headerRight: HeaderRight,
     headerTintColor: theme.colors.tertiary,
+    headerLargeTitleStyle: fontStyles,
+    headerBackTitleStyle: fontStyles,
+    headerTitleStyle: fontStyles,
   },
   tabName: 'Go Serve',
   feedName: 'PRAY',
@@ -136,6 +144,9 @@ const StoriesTab = createFeatureFeedTab({
   // feedName: 'STORIES',
   options: {
     headerLeft: HeaderLeft,
+    headerLargeTitleStyle: fontStyles,
+    headerBackTitleStyle: fontStyles,
+    headerTitleStyle: fontStyles,
   },
 });
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from 'react-native';
-import ContentNodeHeader from '../ui/ContentNodeHeader';
 import { ButtonLink } from '@apollosproject/ui-kit';
 import { safeHandleUrl } from '@apollosproject/ui-connected';
+import ContentNodeHeader from '../ui/ContentNodeHeader';
 
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
  overridden and/or customized here! */
@@ -17,6 +17,18 @@ const colors = {
   primary: 'rgba(79, 110, 174, 1)',
   secondary: 'rgba(95, 192, 194, 1)',
   tertiary: 'rgba(250, 101, 85, 1)',
+};
+
+const types = {
+  light: {
+    colors: {
+      screen: '#DDDFDF',
+      background: {
+        screen: '#DDDFDF',
+        regular: '#FFFFFF',
+      },
+    },
+  },
 };
 
 /* Base Typography sizing and fonts.
@@ -129,4 +141,5 @@ export default {
   colors,
   overrides,
   typography,
+  types,
 };

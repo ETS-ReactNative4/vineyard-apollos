@@ -144,7 +144,7 @@ TABS:
               - 2054
             limit: 3
       type: HorizontalCardList
-      subtitle: Devotionals
+      subtitle: All Series
 
   WATCH: # Set
     - algorithms:
