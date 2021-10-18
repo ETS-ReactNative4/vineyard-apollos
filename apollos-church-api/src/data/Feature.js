@@ -1,6 +1,7 @@
 import { Feature } from '@apollosproject/data-connector-postgres';
 import gql from 'graphql-tag';
 import { Op } from 'sequelize';
+import ApollosConfig from '@apollosproject/config';
 
 const { models, migrations } = Feature;
 
@@ -51,6 +52,8 @@ const resolver = {
       dataSources.Feature.getLocationFeature({
         ...args,
       }),
+    getContentItemId: (root, args, { dataSources }) =>
+      ApollosConfig.TABS[args.tab]?.contentItemId,
   },
   CardListItem: {
     ...Feature.resolver.CardListItem,
@@ -85,9 +88,14 @@ const schema = gql`
     date: String
   }
 
+  extend enum Tab {
+    STORIES
+  }
+
   extend type Query {
     getLocationFeature(nodeId: ID!): LocationFeature
       @cacheControl(scope: PRIVATE)
+    getContentItemId(tab: Tab!): ID @cacheControl(scope: PRIVATE)
   }
 `;
 

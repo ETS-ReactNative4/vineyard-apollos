@@ -171,12 +171,5 @@ TABS:
               - 2057
       type: VerticalCardList
 
-  # STORIES:
-  #   - algorithms:
-  #       - type: CONTENT_FEED
-  #         arguments:
-  #           channelIds:
-  #             - 8
-  #           limit: 4
-  #     type: VerticalCardList
-  #     subtitle: Something Else
+  STORIES:
+    contentItemId: UniversalContentItem:d1269b60-06c9-497e-8ad9-7f0cab5941bc
