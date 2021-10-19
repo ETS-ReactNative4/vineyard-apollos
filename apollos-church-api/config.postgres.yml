@@ -144,6 +144,13 @@ TABS:
               - 2054
             limit: 6
       type: HorizontalCardList
+      primaryAction:
+        action: OPEN_CHANNEL
+        title: 'Read More'
+        relatedNode:
+          __typename: ContentChannel
+          apollosId: ContentChannel:20e2ef52-00e4-4530-864f-c3b7d67d6438
+          title: All Series
       subtitle: All Series
 
   WATCH: # Set
