@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { ButtonLink } from '@apollosproject/ui-kit';
+import { safeHandleUrl } from '@apollosproject/ui-connected';
 import ContentNodeHeader from '../ui/ContentNodeHeader';
 
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
@@ -15,6 +17,18 @@ const colors = {
   primary: 'rgba(79, 110, 174, 1)',
   secondary: 'rgba(95, 192, 194, 1)',
   tertiary: 'rgba(250, 101, 85, 1)',
+};
+
+const types = {
+  light: {
+    colors: {
+      screen: '#DDDFDF',
+      background: {
+        screen: '#DDDFDF',
+        regular: '#FFFFFF',
+      },
+    },
+  },
 };
 
 /* Base Typography sizing and fonts.
@@ -84,6 +98,19 @@ const overrides = {
     authTitleText: 'Have We Met?',
     // eslint-disable-next-line react/display-name
     promptText: `Sign In For A Personalized Experience That Helps You Grow And Show God's Love Beyond The Church Walls`,
+    // eslint-disable-next-line react/display-name
+    footerComponent: () => (
+      <Text>
+        By Clicking &quot;Next,&quot; You Accept Our{' '}
+        <ButtonLink
+          onPress={() =>
+            safeHandleUrl('https://www.vineyardcincinnati.com/privacy')
+          }
+        >
+          Privacy Policy And Terms Of Use.
+        </ButtonLink>
+      </Text>
+    ),
   },
   'ui-onboarding.AskNotifications': {
     // eslint-disable-next-line react/display-name
@@ -114,4 +141,5 @@ export default {
   colors,
   overrides,
   typography,
+  types,
 };

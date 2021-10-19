@@ -373,18 +373,18 @@
   dependencies:
     react-native-device-info "^4.0.1"
 
-"@apollosproject/ui-auth@^2.34.0":
-  version "2.34.0"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.34.0.tgz#0de9843f010da1efaae0cb674dbe78165b092f3e"
-  integrity sha512-798H/1hfE6XZej1ycbdb4HJFc8zd8bwqtOIKVUtfk6e+DNm68yadiaXeMnzgNxXg6QK7tRo7Ehc9dHOUhryxhA==
+"@apollosproject/ui-auth@^2.35.1-canary.3":
+  version "2.35.1-canary.3"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.35.1-canary.3.tgz#dec32010be93616160a5cf7369716aeaa1639662"
+  integrity sha512-ECc58DmEMkfgUsXzz1MmzvVqlsGWfjx0a+uJyuAgDgiapNALoy/bnopESQt363RQv9Pp2V+22s1nJMvTk6hidA==
   dependencies:
     formik "1.5.1"
     yup "^0.27.0"
 
-"@apollosproject/ui-connected@^2.34.1-canary.1":
-  version "2.34.1-canary.1"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.34.1-canary.1.tgz#73367ab5bb0780560b6a39c08be2c4fff7513e33"
-  integrity sha512-nuKuT+0MK3m1ow+rxJXsYK97Yi90iKwmWGWsjLlOPwrEZ/EPQz6hZDqhjCm/EBiMpbS8Z+F/50QaQ+80MnTX1g==
+"@apollosproject/ui-connected@^2.35.1-canary.0":
+  version "2.35.1-canary.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.35.1-canary.0.tgz#76d28e4d588d6c2b067088c4f02ba0769ecdf172"
+  integrity sha512-AsEyuR11UvM1WNBJBY5sExoKtma80H1KA3vrY7CtvicEL2MdemkKiJ5twJnvvAV19bCOpv4eKFulTC2+zxuwCg==
   dependencies:
     apollo-upload-client "14.1.3"
     graphql-tag "2.9.2"
@@ -7154,6 +7154,11 @@ date-fns@^2.0.1:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
+
+date-fns@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
+  integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
 dateformat@^3.0.0:
   version "3.0.3"

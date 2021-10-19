@@ -7,6 +7,7 @@ class dataSource extends ActionAlgorithm.dataSource {
     ...this.ACTION_ALGORITHMS,
     COMPLETED_CONTENT_FEED: this.completedContentFeedAlgorithm.bind(this),
     SERIES_ITEM_IN_PROGRESS: this.seriesItemInProgressAlgorithm.bind(this),
+    OPEN_GO_TAB: this.openGoTabAlgorithm.bind(this),
   };
 
   async contentFeedAlgorithm({
@@ -29,6 +30,23 @@ class dataSource extends ActionAlgorithm.dataSource {
       image: hasImage ? item.getCoverImage() : null,
       action: 'READ_CONTENT',
       summary: item.summary,
+    }));
+  }
+
+  async openGoTabAlgorithm(...args) {
+    const { Feature } = this.context.dataSources;
+    const contentFeed = await this.contentFeedAlgorithm(...args);
+
+    return contentFeed.map((item) => ({
+      ...item,
+      ...Feature.attachActionIds({
+        ...item,
+        action: 'OPEN_URL',
+        relatedNode: {
+          __typename: 'Url',
+          url: 'GoDoGood://app-link/nav/Go',
+        },
+      }),
     }));
   }
 

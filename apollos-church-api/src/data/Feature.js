@@ -1,6 +1,9 @@
 import { Feature } from '@apollosproject/data-connector-postgres';
 import gql from 'graphql-tag';
 import { Op } from 'sequelize';
+import ApollosConfig from '@apollosproject/config';
+
+const { models, migrations } = Feature;
 
 class dataSource extends Feature.dataSource {
   getLocationFeature = async (args) => {
@@ -49,10 +52,25 @@ const resolver = {
       dataSources.Feature.getLocationFeature({
         ...args,
       }),
+    getContentItemId: (root, args, { dataSources }) =>
+      ApollosConfig.TABS[args.tab]?.contentItemId,
+  },
+  CardListItem: {
+    ...Feature.resolver.CardListItem,
+    actionIcon: ({ subtitle }) => {
+      switch (subtitle) {
+        case 'Be Ready':
+          return 'themed-ready';
+        case 'Get Set':
+          return 'themed-set';
+        case 'Go Serve':
+          return 'themed-go';
+        default:
+          return null;
+      }
+    },
   },
 };
-
-const { models, migrations } = Feature;
 
 const schema = gql`
   ${Feature.schema}
@@ -70,9 +88,14 @@ const schema = gql`
     date: String
   }
 
+  extend enum Tab {
+    STORIES
+  }
+
   extend type Query {
     getLocationFeature(nodeId: ID!): LocationFeature
       @cacheControl(scope: PRIVATE)
+    getContentItemId(tab: Tab!): ID @cacheControl(scope: PRIVATE)
   }
 `;
 

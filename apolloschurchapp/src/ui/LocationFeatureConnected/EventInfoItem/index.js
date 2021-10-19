@@ -42,16 +42,21 @@ EventInfoItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: () => ({
+  container: (theme) => ({
     flexDirection: 'row',
     padding: 8,
     borderBottomColor: 'rgba(0,0,0,0.2)',
     borderBottomWidth: 1,
     minHeight: 60,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.paper,
   }),
-  textContainer: { flexDirection: 'column', paddingHorizontal: 8, flexGrow: 1 },
+  textContainer: {
+    flexDirection: 'column',
+    maxWidth: '90%',
+    paddingHorizontal: 8,
+    flexGrow: 1,
+  },
   icon: {
     paddingHorizontal: 8,
   },

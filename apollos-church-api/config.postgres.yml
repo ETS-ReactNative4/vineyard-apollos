@@ -106,7 +106,7 @@ TABS:
           limit: 1
           subtitle: Be Ready
           hasImage: false
-      type: HeroList
+      type: VerticalCardList
     - algorithms:
       - type: CONTENT_FEED
         arguments:
@@ -114,15 +114,15 @@ TABS:
             - 2056
           limit: 1
           subtitle: Get Set
-      type: HeroList
+      type: VerticalCardList
     - algorithms:
-      - type: CONTENT_FEED
+      - type: OPEN_GO_TAB
         arguments:
           channelIds:
             - 2060
           limit: 1
           subtitle: Go Serve
-      type: HeroList
+      type: VerticalCardList
     - algorithms: [DAILY_PRAYER]
       isCard: true
       type: PrayerList
@@ -132,6 +132,9 @@ TABS:
     - algorithms:
       - type: SERIES_ITEM_IN_PROGRESS
         arguments:
+          channelIds:
+            - 2055
+          limit: 1
           categoryId: 8edb84c2-063a-45bf-b92e-845745edb57a
       type: VerticalCardList
     - algorithms:
@@ -141,7 +144,7 @@ TABS:
               - 2054
             limit: 3
       type: HorizontalCardList
-      subtitle: Devotionals
+      subtitle: All Series
 
   WATCH: # Set
     - algorithms:
@@ -150,7 +153,8 @@ TABS:
           channelIds:
             - 2056
           limit: 1
-      type: HeroList
+          subtitle: Get Set
+      type: VerticalCardList
       subtitle: Daily Challenge
     - algorithms:
       - type: COMPLETED_CONTENT_FEED
@@ -167,12 +171,5 @@ TABS:
               - 2057
       type: VerticalCardList
 
-  # STORIES:
-  #   - algorithms:
-  #       - type: CONTENT_FEED
-  #         arguments:
-  #           channelIds:
-  #             - 8
-  #           limit: 4
-  #     type: VerticalCardList
-  #     subtitle: Something Else
+  STORIES:
+    contentItemId: UniversalContentItem:d1269b60-06c9-497e-8ad9-7f0cab5941bc
