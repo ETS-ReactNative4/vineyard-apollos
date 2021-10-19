@@ -52,7 +52,7 @@ const resolver = {
       dataSources.Feature.getLocationFeature({
         ...args,
       }),
-    getContentItemId: (root, args, { dataSources }) =>
+    getContentItemId: (root, args) =>
       ApollosConfig.TABS[args.tab]?.contentItemId,
   },
   CardListItem: {
