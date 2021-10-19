@@ -104,7 +104,9 @@ const overrides = {
         By Clicking &quot;Next,&quot; You Accept Our{' '}
         <ButtonLink
           onPress={() =>
-            safeHandleUrl('https://www.vineyardcincinnati.com/privacy')
+            safeHandleUrl(
+              'https://www.vineyardcincinnati.com/privacy-and-terms-of-use'
+            )
           }
         >
           Privacy Policy And Terms Of Use.

@@ -170,19 +170,14 @@ const UserSettings = () => {
                 </Touchable>
                 <Divider /> */}
                   <Touchable
-                    onPress={() => openUrl('https://apollosrock.newspring.cc/')}
+                    onPress={() =>
+                      openUrl(
+                        'https://www.vineyardcincinnati.com/privacy-and-terms-of-use'
+                      )
+                    }
                   >
                     <Cell>
-                      <CellText>Privacy Policy</CellText>
-                      <StyledCellIcon name="arrow-next" />
-                    </Cell>
-                  </Touchable>
-                  <Divider />
-                  <Touchable
-                    onPress={() => openUrl('https://apollosrock.newspring.cc/')}
-                  >
-                    <Cell>
-                      <CellText>Terms of Use</CellText>
+                      <CellText>Privacy Policy and Terms of Use</CellText>
                       <StyledCellIcon name="arrow-next" />
                     </Cell>
                   </Touchable>
