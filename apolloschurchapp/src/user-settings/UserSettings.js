@@ -3,6 +3,12 @@ import { ScrollView } from 'react-native';
 import { useQuery, useMutation, useApolloClient, gql } from '@apollo/client';
 import { useNavigation } from '@react-navigation/native';
 import { getVersion, getBuildNumber } from 'react-native-device-info';
+import {
+  RequestedFollowListConnected,
+  SuggestedFollowListConnected,
+  RockAuthedWebBrowser,
+  UserAvatarUpdate,
+} from '@apollosproject/ui-connected';
 import { get } from 'lodash';
 
 import {
@@ -27,10 +33,6 @@ import {
   onboardingComplete,
 } from '@apollosproject/ui-onboarding';
 import { GET_LOGIN_STATE, LOGOUT } from '@apollosproject/ui-auth';
-import {
-  RockAuthedWebBrowser,
-  UserAvatarUpdate,
-} from '@apollosproject/ui-connected';
 
 const StyledPaddedView = withTheme(({ theme }) => ({
   style: {
@@ -81,6 +83,8 @@ const UserSettings = () => {
           <UserAvatarUpdate />
           <H3>{firstName && lastName ? `${firstName} ${lastName}` : ''}</H3>
         </Container>
+        <RequestedFollowListConnected />
+        <SuggestedFollowListConnected />
         <RockAuthedWebBrowser>
           {(openUrl) => (
             <>
