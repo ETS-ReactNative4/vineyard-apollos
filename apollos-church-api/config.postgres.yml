@@ -142,7 +142,7 @@ TABS:
           arguments:
             channelIds:
               - 2054
-            limit: 3
+            limit: 6
       type: HorizontalCardList
       subtitle: All Series
 
