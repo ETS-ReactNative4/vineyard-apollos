@@ -37,20 +37,20 @@ const types = {
 const typography = {
   sans: {
     regular: {
-      default: 'Nunito-Regular',
-      italic: 'Nunito-Italic',
+      default: 'NunitoSans-Regular',
+      italic: 'NunitoSans-Italic',
     },
     medium: {
-      default: 'Nunito-SemiBold',
-      italic: 'Nunito-SemiBoldItalic',
+      default: 'NunitoSans-SemiBold',
+      italic: 'NunitoSans-SemiBoldItalic',
     },
     bold: {
-      default: 'Nunito-Bold',
-      italic: 'Nunito-BoldItalic',
+      default: 'NunitoSans-Bold',
+      italic: 'NunitoSans-BoldItalic',
     },
     black: {
-      default: 'Nunito-Bold',
-      italic: 'Nunito-BoldItalic',
+      default: 'NunitoSans-Bold',
+      italic: 'NunitoSans-BoldItalic',
     },
   },
   ui: {
