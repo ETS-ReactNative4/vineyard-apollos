@@ -84,7 +84,7 @@ const HeaderRight = () => {
   );
 };
 
-const fontStyles = { fontFamily: 'Nunito-Bold' };
+const fontStyles = { fontFamily: 'NunitoSans-Bold' };
 
 const HomeTabWithHeader = (props) => (
   <DefaultTabComponent {...props} ListHeaderComponent={HomeTabHeader} />
