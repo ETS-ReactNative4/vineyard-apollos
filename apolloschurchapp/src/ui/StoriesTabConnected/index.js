@@ -1,7 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { NodeFeaturesConnected } from '@apollosproject/ui-connected';
+import { styled } from '@apollosproject/ui-kit';
 import { gql, useQuery } from '@apollo/client';
 import PropTypes from 'prop-types';
 
@@ -33,6 +35,8 @@ StoriesTabConnected.propTypes = {
   feedName: PropTypes.string,
 };
 
+const TestView = styled({ height: '15%' })(View);
+
 // eslint-disable-next-line import/prefer-default-export
 const createStoriesTab = ({
   tabName,
@@ -44,7 +48,10 @@ const createStoriesTab = ({
   contentItemId,
 }) => {
   const TabComponentToRender = (props) => (
-    <TabComponent {...props} {...tabProps} feedName={feedName} />
+    <>
+      <TabComponent {...props} {...tabProps} feedName={feedName} />
+      <TestView />
+    </>
   );
   const TabStack = createNativeStackNavigator();
   const TabNav = () => (
