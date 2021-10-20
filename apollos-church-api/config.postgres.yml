@@ -57,6 +57,17 @@ BIBLE_API:
     KJV: 'de4e12af7f28f599-02'
 CLOUDINARY:
   URL: ${CLOUDINARY_URL}
+SUGGESTED_FOLLOWS:
+  -
+    id: 17d09e50-7bb2-4997-af06-9fd63edadc09 # Matt Massey
+  -
+    id: 429064f1-ef68-4f50-bcb5-63a2034f83ba # JR Cifani
+  -
+    id: dff317e2-c3db-4a40-9c8e-4b497810a0a1 # Beth Guckenberger
+  -
+    id: 7d25bc57-b6c2-436c-bfa5-7854091efad9 # Raúl Latoni
+  -
+    id: c4b7318e-64ab-4911-8a95-cabeb7156989 # Clay Harrington
 
 # This key holds various properties that allow our GraphQL server to map to your Rock Instance
 ROCK_MAPPINGS:
