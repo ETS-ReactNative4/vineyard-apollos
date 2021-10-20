@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   container: (theme) => ({
     flexDirection: 'row',
     padding: 8,
-    borderBottomColor: 'rgba(0,0,0,0.2)',
-    borderBottomWidth: 1,
+    borderTopColor: 'rgba(0,0,0,0.2)',
+    borderTopWidth: 1,
     minHeight: 60,
     alignItems: 'center',
     backgroundColor: theme.colors.paper,

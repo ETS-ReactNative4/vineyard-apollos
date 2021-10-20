@@ -19,27 +19,27 @@ export default function LocationFeature({
 
   return (
     <>
-      <MapView
-        initialRegion={{
-          latitude: lat,
-          longitude: long,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-        style={{ aspectRatio: 2 / 1 }}
-      >
-        <Marker
-          latitude={lat}
-          longitude={long}
-          onPress={undefined}
-          opacityStyle={undefined}
-        />
-      </MapView>
+      {lat && (
+        <MapView
+          initialRegion={{
+            latitude: lat,
+            longitude: long,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
+          }}
+          style={{ aspectRatio: 2 / 1 }}
+        >
+          <Marker
+            latitude={lat}
+            longitude={long}
+            onPress={undefined}
+            opacityStyle={undefined}
+          />
+        </MapView>
+      )}
       <EventInfoItem
         onPress={() =>
           openMap({
-            latitude: lat,
-            longitude: long,
             query: address,
           })
         }
