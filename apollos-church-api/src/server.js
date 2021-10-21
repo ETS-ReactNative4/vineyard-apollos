@@ -1,8 +1,12 @@
 import { ApolloServer } from 'apollo-server-express';
 import ApollosConfig from '@apollosproject/config';
 import express from 'express';
+import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { RockLoggingExtension } from '@apollosproject/rock-apollo-data-source';
 import { get } from 'lodash';
+
+import { BaseRedisCache } from 'apollo-server-cache-redis';
+import Redis from 'ioredis';
 import { setupUniversalLinks } from '@apollosproject/server-core';
 import { createMigrationRunner } from '@apollosproject/data-connector-postgres';
 import { BugsnagPlugin } from '@apollosproject/bugsnag';
@@ -31,18 +35,6 @@ export { resolvers, schema, testSchema };
 const isDev =
   process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
-const extensions = isDev ? [() => new RockLoggingExtension()] : [];
-
-const cacheOptions = isDev
-  ? {}
-  : {
-      cacheControl: {
-        stripFormattedExtensions: false,
-        calculateHttpHeaders: true,
-        defaultMaxAge: 3600,
-      },
-    };
-
 const { ROCK, APP } = ApollosConfig;
 
 const apolloServer = new ApolloServer({
@@ -51,7 +43,16 @@ const apolloServer = new ApolloServer({
   dataSources,
   context,
   introspection: true,
-  extensions,
+  extensions: isDev ? [() => new RockLoggingExtension()] : [],
+  plugins: [
+    responseCachePlugin({
+      sessionId: (requestContext) =>
+        requestContext.request.http.headers.get('authorization') || null,
+      shouldReadFromCache: () => !isDev,
+      shouldWriteToCache: () => !isDev,
+    }),
+    new BugsnagPlugin(),
+  ],
   formatError: (error) => {
     console.error(get(error, 'extensions.exception.stacktrace', []).join('\n'));
     return error;
@@ -61,9 +62,19 @@ const apolloServer = new ApolloServer({
       'editor.cursorShape': 'line',
     },
   },
-  plugins: [new BugsnagPlugin()],
   uploads: false,
-  ...cacheOptions,
+  ...(process.env.REDIS_URL
+    ? {
+        cache: new BaseRedisCache({
+          client: new Redis(process.env.REDIS_URL),
+        }),
+      }
+    : {}),
+  cacheControl: {
+    stripFormattedExtensions: false,
+    calculateHttpHeaders: true,
+    defaultMaxAge: 3600,
+  },
 });
 
 const app = express();
