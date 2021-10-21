@@ -7,6 +7,11 @@ import { styled } from '@apollosproject/ui-kit';
 import { gql, useQuery } from '@apollo/client';
 import PropTypes from 'prop-types';
 
+const StoriesContainer = styled(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.type === 'light' && 'white',
+}))(View);
+
 function StoriesTabConnected({ feedName }) {
   const { data } = useQuery(
     gql`
@@ -24,7 +29,9 @@ function StoriesTabConnected({ feedName }) {
   if (data?.getContentItemId) {
     return (
       <BottomSheetModalProvider>
-        <NodeFeaturesConnected nodeId={data?.getContentItemId} />
+        <StoriesContainer>
+          <NodeFeaturesConnected nodeId={data?.getContentItemId} />
+        </StoriesContainer>
       </BottomSheetModalProvider>
     );
   }

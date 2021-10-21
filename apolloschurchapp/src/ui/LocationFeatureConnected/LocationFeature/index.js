@@ -19,7 +19,7 @@ export default function LocationFeature({
 
   return (
     <>
-      {lat && (
+      {lat && long ? (
         <MapView
           initialRegion={{
             latitude: lat,
@@ -36,7 +36,7 @@ export default function LocationFeature({
             opacityStyle={undefined}
           />
         </MapView>
-      )}
+      ) : null}
       <EventInfoItem
         onPress={() =>
           openMap({
@@ -47,7 +47,7 @@ export default function LocationFeature({
         title={name || address}
         subtitle={name && address}
       />
-      {date && <EventInfoItem icon="time" title={date} />}
+      {date ? <EventInfoItem icon="time" title={date} /> : null}
     </>
   );
 }

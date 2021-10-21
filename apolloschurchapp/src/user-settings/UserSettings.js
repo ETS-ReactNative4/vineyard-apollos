@@ -47,10 +47,11 @@ const StyledCellIcon = withTheme(({ theme }) => ({
   fill: theme.colors.neutral.gray2,
 }))(CellIcon);
 
-const Container = styled({
+const Container = styled(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-})(PaddedView);
+  backgroundColor: theme.type === 'light' && 'white',
+}))(PaddedView);
 
 const UserSettings = () => {
   const navigation = useNavigation();
