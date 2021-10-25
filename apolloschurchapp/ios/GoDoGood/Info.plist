@@ -95,9 +95,7 @@
 		<string>NunitoSans-SemiBoldItalic.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
