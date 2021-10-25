@@ -122,7 +122,7 @@ TABS:
       - type: CONTENT_FEED
         arguments:
           channelIds:
-            - 2056
+            - 1acff1cb-805b-4561-b5f7-ee136b0b39b4
           limit: 1
           subtitle: Get Set
       type: VerticalCardList
@@ -169,7 +169,7 @@ TABS:
       - type: CONTENT_FEED
         arguments:
           channelIds:
-            - 2056
+            - 1acff1cb-805b-4561-b5f7-ee136b0b39b4
           limit: 1
           subtitle: Get Set
       type: VerticalCardList
