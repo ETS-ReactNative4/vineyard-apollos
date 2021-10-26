@@ -1,4 +1,5 @@
 import { ActionAlgorithm } from '@apollosproject/data-connector-postgres';
+import { Op } from 'sequelize';
 
 const { schema, resolver } = ActionAlgorithm;
 
@@ -6,6 +7,7 @@ class dataSource extends ActionAlgorithm.dataSource {
   ACTION_ALGORITHMS = {
     ...this.ACTION_ALGORITHMS,
     COMPLETED_CONTENT_FEED: this.completedContentFeedAlgorithm.bind(this),
+    OLDEST_TO_NEWEST_CONTENT_FEED: this.oldestToNewestContentFeedAlgorithm.bind(this),
     SERIES_ITEM_IN_PROGRESS: this.seriesItemInProgressAlgorithm.bind(this),
     OPEN_GO_TAB: this.openGoTabAlgorithm.bind(this),
   };
@@ -22,6 +24,36 @@ class dataSource extends ActionAlgorithm.dataSource {
       limit,
       skip,
     });
+    return items.map((item, i) => ({
+      id: `${item.id}${i}`,
+      title: item.title,
+      subtitle: subtitle || item.contentChannel?.name,
+      relatedNode: item,
+      image: hasImage ? item.getCoverImage() : null,
+      action: 'READ_CONTENT',
+      summary: item.summary,
+    }));
+  }
+
+  async oldestToNewestContentFeedAlgorithm({
+    subtitle = '',
+    channelIds = [],
+    limit = 20,
+    skip = 0,
+    hasImage = true,
+  } = {}) {
+    const { ContentItem } = this.context.dataSources;
+
+    // This is custom....normally it is sorted by DESC
+    const items = await ContentItem.model.findAll({
+      limit,
+      skip,
+      where: {
+        contentItemCategoryId: { [Op.in]: channelIds },
+      },
+      order: [['publishAt', 'ASC']],
+    });
+
     return items.map((item, i) => ({
       id: `${item.id}${i}`,
       title: item.title,
