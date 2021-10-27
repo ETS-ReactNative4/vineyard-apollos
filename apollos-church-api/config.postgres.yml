@@ -183,10 +183,10 @@ TABS:
 
   PRAY: # Go
     - algorithms:
-        - type: CONTENT_FEED
+        - type: NEWEST_TO_OLDEST_CONTENT_FEED
           arguments:
             channelIds:
-              - 2057
+              - a4796c21-4603-4341-8044-f9d41c925362
       type: VerticalCardList
 
   STORIES:
