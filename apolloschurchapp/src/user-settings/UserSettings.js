@@ -50,7 +50,7 @@ const StyledCellIcon = withTheme(({ theme }) => ({
 const Container = styled(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: theme.type === 'light' && 'white',
+  backgroundColor: theme.type === 'light' ? 'white' : null,
 }))(PaddedView);
 
 const UserSettings = () => {
@@ -148,17 +148,31 @@ const UserSettings = () => {
                   <H6>Help & Feedback</H6>
                 </StyledPaddedView>
                 <TableView>
-                  {/* <Touchable
-                  onPress={() => {
-                    openUrl('mailto:support@apollos.app');
-                  }}
-                >
-                  <Cell>
-                    <CellText>Give Feedback</CellText>
-                    <StyledCellIcon name="arrow-next" />
-                  </Cell>
-                </Touchable>
-                <Divider /> */}
+                  <Touchable
+                    onPress={() => {
+                      openUrl(
+                        'mailto:support@GoDoGood.app?subject=Go%20Do%20Good%20App%20Feedback'
+                      );
+                    }}
+                  >
+                    <Cell>
+                      <CellText>App Feedback</CellText>
+                      <StyledCellIcon name="arrow-next" />
+                    </Cell>
+                  </Touchable>
+                  <Touchable
+                    onPress={() => {
+                      openUrl(
+                        'mailto:support@GoDoGood.app?subject=Go%20Do%20Good%20Inquiry'
+                      );
+                    }}
+                  >
+                    <Cell>
+                      <CellText>Contact Our Team</CellText>
+                      <StyledCellIcon name="arrow-next" />
+                    </Cell>
+                  </Touchable>
+                  <Divider />
                   <Touchable
                     onPress={() =>
                       openUrl(
