@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
 
 const StoriesContainer = styled(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.type === 'light' && 'white',
+  backgroundColor: theme.type === 'light' ? 'white' : null,
+  paddingBottom: 100,
 }))(View);
 
 function StoriesTabConnected({ feedName }) {
@@ -42,8 +43,6 @@ StoriesTabConnected.propTypes = {
   feedName: PropTypes.string,
 };
 
-const TestView = styled({ height: '15%' })(View);
-
 // eslint-disable-next-line import/prefer-default-export
 const createStoriesTab = ({
   tabName,
@@ -57,7 +56,6 @@ const createStoriesTab = ({
   const TabComponentToRender = (props) => (
     <>
       <TabComponent {...props} {...tabProps} feedName={feedName} />
-      <TestView />
     </>
   );
   const TabStack = createNativeStackNavigator();

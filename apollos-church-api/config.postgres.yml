@@ -149,10 +149,10 @@ TABS:
           categoryId: 8edb84c2-063a-45bf-b92e-845745edb57a
       type: VerticalCardList
     - algorithms:
-        - type: CONTENT_FEED
+        - type: OLDEST_TO_NEWEST_CONTENT_FEED
           arguments:
             channelIds:
-              - 2054
+              - 20e2ef52-00e4-4530-864f-c3b7d67d6438
             limit: 6
       type: HorizontalCardList
       primaryAction:
@@ -186,7 +186,7 @@ TABS:
         - type: CONTENT_FEED
           arguments:
             channelIds:
-              - 2057
+              - a4796c21-4603-4341-8044-f9d41c925362
       type: VerticalCardList
 
   STORIES:

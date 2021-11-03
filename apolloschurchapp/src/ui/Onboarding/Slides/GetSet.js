@@ -35,7 +35,7 @@ Features.propTypes = {
 
 Features.defaultProps = {
   description:
-    'Join Others To Show Love In The Community By Completeing A Daily Challenge.',
+    'Join Others To Show Love In The Community By Completing A Daily Challenge.',
 };
 
 export default named('ui-onboarding.Features')(Features);
