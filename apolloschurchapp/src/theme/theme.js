@@ -121,7 +121,7 @@ const overrides = {
     description: () => (
       <Text>
         We&apos;ll Let You Know When Important Things Are Happening And Keep You
-        In The Loop
+        In The Loop.
       </Text>
     ),
   },

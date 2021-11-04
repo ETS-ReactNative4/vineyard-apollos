@@ -37,8 +37,7 @@ Features.propTypes = {
 };
 
 Features.defaultProps = {
-  description:
-    "We're Excited To Start This Journey To Overflow Our City With Kindness.",
+  description: 'Pray for others or submit prayer requests.',
 };
 
 export default named('ui-onboarding.Features')(Features);
