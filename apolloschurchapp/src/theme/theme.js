@@ -133,6 +133,11 @@ const overrides = {
       <Text>Follow Others To Stay Connected To Our Community</Text>
     ),
   },
+  'ui-prayer.PrayerDialogScreen': {
+    title: 'Support Your Community Through Prayer',
+    body: 'Pray For Others Or Submit Prayer Requests',
+    primaryActionText: "Let's Go!",
+  },
   'ui-connected.ContentNodeConnected': {
     // eslint-disable-next-line react/display-name
     HeaderComponent: () => (props) => <ContentNodeHeader {...props} />,
