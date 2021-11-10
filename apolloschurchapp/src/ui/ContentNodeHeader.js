@@ -3,6 +3,7 @@ import { ContentTitles } from '@apollosproject/ui-kit';
 import PropTypes from 'prop-types';
 import ContentTilesConnected from '@apollosproject/ui-connected/src/ContentNodeConnected/ContentTitlesConnected';
 import LocationFeatureConnected from './LocationFeatureConnected';
+import OrganizationFeatureConnected from './OrganizationFeatureConnected';
 
 export default function ContentNodeHeader({ isLoading, node }) {
   return isLoading ? (
@@ -11,6 +12,7 @@ export default function ContentNodeHeader({ isLoading, node }) {
     <>
       <ContentTilesConnected node={node} />
       <LocationFeatureConnected nodeId={node.id} />
+      <OrganizationFeatureConnected nodeId={node.id} />
     </>
   );
 }

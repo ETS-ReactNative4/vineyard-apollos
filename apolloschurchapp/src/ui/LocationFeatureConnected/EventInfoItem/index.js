@@ -15,7 +15,7 @@ export default function EventInfoItem({ icon, title, subtitle, onPress }) {
       <Icon
         style={styles.icon}
         fill={theme.colors.text.tertiary}
-        size={theme.sizing.baseUnit * 1.5}
+        size={theme.sizing.baseUnit * 2}
         name={icon}
       />
       <View style={styles.textContainer}>

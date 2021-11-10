@@ -42,6 +42,25 @@ class dataSource extends Feature.dataSource {
 
     return locationDateFeature.id ? locationDateFeature : null;
   };
+
+  getOrganizationFeature = async (args) => {
+    const contentItemId = args.nodeId.split(':')[1];
+    const organizationFeature = await this.model.findOne({
+      where: {
+        parentId: contentItemId,
+        type: 'Organization',
+      },
+    });
+
+    if (organizationFeature) {
+      return {
+        id: organizationFeature.id,
+        name: organizationFeature.data.name,
+        logoUrl: organizationFeature.data.logo,
+      };
+    }
+    return null;
+  };
 }
 
 const resolver = {
@@ -50,6 +69,10 @@ const resolver = {
     ...Feature.resolver.Query,
     getLocationFeature: (root, args, { dataSources }) =>
       dataSources.Feature.getLocationFeature({
+        ...args,
+      }),
+    getOrganizationFeature: (root, args, { dataSources }) =>
+      dataSources.Feature.getOrganizationFeature({
         ...args,
       }),
     getContentItemId: (root, args) =>
@@ -88,12 +111,21 @@ const schema = gql`
     date: String
   }
 
+  type OrganizationFeature implements Feature & Node {
+    id: ID!
+    order: Int
+    name: String
+    logoUrl: String
+  }
+
   extend enum Tab {
     STORIES
   }
 
   extend type Query {
     getLocationFeature(nodeId: ID!): LocationFeature
+      @cacheControl(scope: PRIVATE)
+    getOrganizationFeature(nodeId: ID!): OrganizationFeature
       @cacheControl(scope: PRIVATE)
     getContentItemId(tab: Tab!): ID @cacheControl(scope: PRIVATE)
   }

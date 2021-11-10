@@ -7,7 +7,9 @@ class dataSource extends ActionAlgorithm.dataSource {
   ACTION_ALGORITHMS = {
     ...this.ACTION_ALGORITHMS,
     COMPLETED_CONTENT_FEED: this.completedContentFeedAlgorithm.bind(this),
-    OLDEST_TO_NEWEST_CONTENT_FEED: this.oldestToNewestContentFeedAlgorithm.bind(this),
+    OLDEST_TO_NEWEST_CONTENT_FEED: this.oldestToNewestContentFeedAlgorithm.bind(
+      this
+    ),
     SERIES_ITEM_IN_PROGRESS: this.seriesItemInProgressAlgorithm.bind(this),
     OPEN_GO_TAB: this.openGoTabAlgorithm.bind(this),
   };
