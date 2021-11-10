@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-import { View } from 'react-native';
-import { H4, H3, styled } from '@apollosproject/ui-kit';
+import { View, ImageBackground } from 'react-native';
+import { H4, H3, styled, Themer } from '@apollosproject/ui-kit';
 import { format, startOfToday } from 'date-fns';
 
 // import GET_USER_NAME from './getUserName';
@@ -9,7 +9,6 @@ import { format, startOfToday } from 'date-fns';
 const StyledCard = styled(({ theme }) => ({
   paddingHorizontal: theme.sizing.baseUnit,
   paddingVertical: theme.sizing.baseUnit,
-  paddingBottom: 0,
 }))(View);
 
 const DateText = styled(({ theme }) => ({
@@ -19,6 +18,13 @@ const DateText = styled(({ theme }) => ({
 const GreetingText = styled(({ theme }) => ({
   color: theme.colors.text.primary,
 }))(H3);
+
+const Background = styled({
+  width: '100%',
+  marginTop: -80,
+  aspectRatio: 375 / 357, // the image is 375px x 357px
+  justifyContent: 'flex-end',
+})(ImageBackground);
 
 const GET_USER_NAME = gql`
   query CurrentUserPhoto {
@@ -41,12 +47,16 @@ const HomeTabHeader = () => {
   const today = format(startOfToday(), 'EEEE, MMMM do');
 
   return (
-    <StyledCard>
-      <DateText>{today}</DateText>
-      <GreetingText>
-        {firstName ? `Welcome, ${firstName}!` : 'Welcome!'}
-      </GreetingText>
-    </StyledCard>
+    <Background source={require('./homeimage.png')}>
+      <Themer theme={{ type: 'dark' }}>
+        <StyledCard>
+          <DateText>{today}</DateText>
+          <GreetingText>
+            {firstName ? `Welcome, ${firstName}!` : 'Welcome!'}
+          </GreetingText>
+        </StyledCard>
+      </Themer>
+    </Background>
   );
 };
 

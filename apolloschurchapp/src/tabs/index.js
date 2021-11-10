@@ -11,6 +11,7 @@ import {
   withTheme,
   Icon,
   Touchable,
+  styled,
 } from '@apollosproject/ui-kit';
 import { useApolloClient } from '@apollo/client';
 import {
@@ -86,8 +87,16 @@ const HeaderRight = () => {
 
 const fontStyles = { fontFamily: 'NunitoSans-Bold' };
 
+const HomeTabComponent = styled(({ theme: styledTheme }) => ({
+  backgroundColor: styledTheme.colors.primary,
+}))(DefaultTabComponent);
+
 const HomeTabWithHeader = (props) => (
-  <DefaultTabComponent {...props} ListHeaderComponent={HomeTabHeader} />
+  <HomeTabComponent
+    {...props}
+    ListHeaderComponent={HomeTabHeader}
+    contentInsetAdjustmentBehavior="automatic"
+  />
 );
 // we nest stack inside of tabs so we can use all the fancy native header features
 const HomeTab = createFeatureFeedTab({
@@ -96,6 +105,11 @@ const HomeTab = createFeatureFeedTab({
     headerCenter: HeaderCenter,
     headerLeft: HeaderLeft,
     headerLargeTitle: false,
+    headerStyle: {
+      blurEffect: 'systemChromeMaterial',
+      backgroundColor: 'transparent',
+    },
+    headerTranslucent: true,
   },
   tabName: 'Home',
   feedName: 'HOME',
