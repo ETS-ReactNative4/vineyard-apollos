@@ -59,7 +59,7 @@ CLOUDINARY:
   URL: ${CLOUDINARY_URL}
 SUGGESTED_FOLLOWS:
   -
-    id: 17d09e50-7bb2-4997-af06-9fd63edadc09 # Matt Massey
+    id: 6379020d-d0a9-45a2-9fe0-7dfdb482daf3 # Matt Massey
   -
     id: 429064f1-ef68-4f50-bcb5-63a2034f83ba # JR Cifani
   -
