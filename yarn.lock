@@ -406,12 +406,13 @@
     entities "^1.1.2"
     htmlparser2 "3.9.2"
 
-"@apollosproject/ui-kit@^2.35.1-canary.5":
-  version "2.35.1-canary.5"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.35.1-canary.5.tgz#759b6908a38e60a05f14d80ec53c52dfb12a4449"
-  integrity sha512-aAaGysfCTDUJ+WoZYCH5O814GCSVxzqEagNUcFUDRS0En5W+pFLbfCNHpZc8oQD7t8s0uKhHUWaOKGHokKc1dQ==
+"@apollosproject/ui-kit@^2.36.4-canary.3":
+  version "2.36.4-canary.3"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.36.4-canary.3.tgz#4f8b2f1f40a262ebbbfa04489591da58d57972a2"
+  integrity sha512-6Epez3g+B4F/JTsgMht9WD2Xk9shQzP7ibcbZtG0f/HWhD7K5lSpdyL6JwisppRzkk2+FQW4CN1jM/s8oP9y7A==
   dependencies:
     "@react-native-community/blur" "^3.6.0"
+    "@react-native-picker/picker" "^1.9.4"
     color "^3.1.0"
     lodash "^4.17.11"
     moment "^2.24.0"
