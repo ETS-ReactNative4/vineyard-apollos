@@ -381,10 +381,10 @@
     formik "1.5.1"
     yup "^0.27.0"
 
-"@apollosproject/ui-connected@^2.36.2-canary.2":
-  version "2.36.2-canary.2"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.36.2-canary.2.tgz#8b8a8d9fcd3bd83838f21ce4dbde5774adf9170a"
-  integrity sha512-Eohn92DhPN97eWjNlAGw/osfivM+N/qhkzSj5GcIWZs1dRPH+9HQ8zBh9aAOnBSWmIKl7+7fGFcpS724J5umAA==
+"@apollosproject/ui-connected@^2.37.0":
+  version "2.37.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.37.0.tgz#5055ddd48edde7c5cd4975902be7aa3e105e5916"
+  integrity sha512-MwQlRfDT4d3UEK9ZS9OcV4iaxRdNBbFXpNIQsS6K/evRcSr5oMmine/xVptZJb/p/N2vlf2xtsnqf3Ek/aCU/w==
   dependencies:
     apollo-upload-client "14.1.3"
     graphql-tag "2.9.2"
@@ -406,10 +406,10 @@
     entities "^1.1.2"
     htmlparser2 "3.9.2"
 
-"@apollosproject/ui-kit@^2.36.4-canary.3":
-  version "2.36.4-canary.3"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.36.4-canary.3.tgz#4f8b2f1f40a262ebbbfa04489591da58d57972a2"
-  integrity sha512-6Epez3g+B4F/JTsgMht9WD2Xk9shQzP7ibcbZtG0f/HWhD7K5lSpdyL6JwisppRzkk2+FQW4CN1jM/s8oP9y7A==
+"@apollosproject/ui-kit@^2.37.0":
+  version "2.37.0"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-kit/-/ui-kit-2.37.0.tgz#18471dc4899273c27948121631926ea03c73bbaf"
+  integrity sha512-tXHpDmDlGE9bxO9t5HDCsX9D347fAe8Dl0LjVC27nYGoQ/YVHm4G5K7t+B4PNpQ4sfPG8UCEeLziZguBM5owOA==
   dependencies:
     "@react-native-community/blur" "^3.6.0"
     "@react-native-picker/picker" "^1.9.4"
