@@ -315,7 +315,7 @@
   dependencies:
     react-native-device-info "^4.0.1"
 
-"@apollosproject/ui-auth@^2.36.2-canary.3":
+"@apollosproject/ui-auth@^2.38.0":
   version "2.38.0"
   resolved "https://registry.yarnpkg.com/@apollosproject/ui-auth/-/ui-auth-2.38.0.tgz#1a5a9b353f27a29b1ad4c36cc773b008c084c819"
   integrity sha512-u9xG2Ki0RRtq7hTK0w2hIY2ZiuLAk4XV7BjWF2NH1eR3aRsiHWMV+O4xb0MRnxklO5kz14kNljLp88litJj5IA==
