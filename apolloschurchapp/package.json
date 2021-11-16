@@ -51,7 +51,7 @@
     "@apollosproject/ui-connected": "2.37.1-canary.2",
     "@apollosproject/ui-fragments": "^2.36.2-canary.2",
     "@apollosproject/ui-htmlview": "^2.34.0",
-    "@apollosproject/ui-kit": "^2.37.0",
+    "@apollosproject/ui-kit": "^2.38.1-canary.3",
     "@apollosproject/ui-mapview": "^2.34.0",
     "@apollosproject/ui-media-player": "^2.34.0",
     "@apollosproject/ui-notifications": "^2.34.0",
