@@ -3,14 +3,16 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useTheme, H4 } from '@apollosproject/ui-kit';
 import PropTypes from 'prop-types';
 
-export default function OrganizationFeature({ name, logoUrl }) {
+export default function OrganizationFeature({ name, logoUrl, isCard }) {
   const theme = useTheme();
 
   return (
-    <TouchableOpacity disabled style={styles.container(theme)}>
+    <TouchableOpacity disabled style={styles.container(theme, isCard)}>
       <Image source={{ uri: logoUrl }} style={styles.image(theme)} />
       <View style={styles.textContainer}>
-        <H4 bold>{name}</H4>
+        <H4 bold style={styles.h4(theme)}>
+          {name}
+        </H4>
       </View>
     </TouchableOpacity>
   );
@@ -19,17 +21,18 @@ export default function OrganizationFeature({ name, logoUrl }) {
 OrganizationFeature.propTypes = {
   name: PropTypes.string,
   logoUrl: PropTypes.string,
+  isCard: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
-  container: (theme) => ({
+  container: (theme, isCard) => ({
     flexDirection: 'row',
-    padding: 8,
-    borderTopColor: 'rgba(0,0,0,0.2)',
-    borderTopWidth: 1,
+    padding: !isCard ? 8 : 0,
+    borderTopColor: !isCard ? 'rgba(0,0,0,0.2)' : undefined,
+    borderTopWidth: !isCard ? 1 : undefined,
     minHeight: 60,
     alignItems: 'center',
-    backgroundColor: theme.colors.paper,
+    backgroundColor: !isCard ? theme.colors.paper : undefined,
   }),
   textContainer: {
     flexDirection: 'column',
@@ -42,5 +45,8 @@ const styles = StyleSheet.create({
     height: theme.sizing.baseUnit * 2,
     width: theme.sizing.baseUnit * 2,
     borderRadius: 5,
+  }),
+  h4: ({ colors }) => ({
+    color: colors.text.secondary,
   }),
 });
