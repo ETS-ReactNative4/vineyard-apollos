@@ -151,6 +151,9 @@ const GoTab = createFeatureFeedTab({
   },
   tabName: 'Go Serve',
   feedName: 'PRAY',
+  tabProps: {
+    useTagFilter: true,
+  },
 });
 
 const StoriesTab = createStoriesTab({

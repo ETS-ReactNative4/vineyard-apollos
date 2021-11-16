@@ -20,12 +20,24 @@ class dataSource extends ActionAlgorithm.dataSource {
     limit = 20,
     skip = 0,
     hasImage = true,
+    tags = [],
   } = {}) {
     const { ContentItem } = this.context.dataSources;
     const items = await ContentItem.getFromCategoryIds(channelIds, {
       limit,
       skip,
+      include: [
+        {
+          model: this.sequelize.models.tag,
+          as: 'tags',
+          where: tags.length > 0 && {
+            name: tags,
+          },
+          required: tags.length > 0,
+        },
+      ],
     });
+
     return items.map((item, i) => ({
       id: `${item.id}${i}`,
       title: item.title,

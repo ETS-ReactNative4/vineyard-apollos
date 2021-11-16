@@ -48,7 +48,7 @@
     "@apollosproject/react-native-airplay-btn": "^0.2.0",
     "@apollosproject/ui-analytics": "^2.34.0",
     "@apollosproject/ui-auth": "^2.36.2-canary.3",
-    "@apollosproject/ui-connected": "^2.37.0",
+    "@apollosproject/ui-connected": "2.37.1-canary.2",
     "@apollosproject/ui-fragments": "^2.36.2-canary.2",
     "@apollosproject/ui-htmlview": "^2.34.0",
     "@apollosproject/ui-kit": "^2.37.0",
