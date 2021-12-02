@@ -12,9 +12,33 @@ class dataSource extends ActionAlgorithm.dataSource {
     ),
     SERIES_ITEM_IN_PROGRESS: this.seriesItemInProgressAlgorithm.bind(this),
     OPEN_GO_TAB: this.openGoTabAlgorithm.bind(this),
+    CONTENT_FEED_BY_ORDER: this.contentFeedByOrderAlgorithm.bind(this),
   };
 
   async contentFeedAlgorithm({
+    subtitle = '',
+    channelIds = [],
+    limit = 20,
+    skip = 0,
+    hasImage = true,
+  } = {}) {
+    const { ContentItem } = this.context.dataSources;
+    const items = await ContentItem.getFromCategoryIds(channelIds, {
+      limit,
+      skip,
+    });
+    return items.map((item, i) => ({
+      id: `${item.id}${i}`,
+      title: item.title,
+      subtitle: subtitle || item.contentChannel?.name,
+      relatedNode: item,
+      image: hasImage ? item.getCoverImage() : null,
+      action: 'READ_CONTENT',
+      summary: item.summary,
+    }));
+  }
+
+  async contentFeedByOrderAlgorithm({
     subtitle = '',
     channelIds = [],
     limit = 20,

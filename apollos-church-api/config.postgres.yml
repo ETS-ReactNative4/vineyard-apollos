@@ -119,7 +119,7 @@ TABS:
           hasImage: false
       type: VerticalCardList
     - algorithms:
-      - type: CONTENT_FEED
+      - type: CONTENT_FEED_BY_ORDER
         arguments:
           channelIds:
             - 1acff1cb-805b-4561-b5f7-ee136b0b39b4
@@ -166,7 +166,7 @@ TABS:
 
   WATCH: # Set
     - algorithms:
-      - type: CONTENT_FEED
+      - type: CONTENT_FEED_BY_ORDER
         arguments:
           channelIds:
             - 1acff1cb-805b-4561-b5f7-ee136b0b39b4
