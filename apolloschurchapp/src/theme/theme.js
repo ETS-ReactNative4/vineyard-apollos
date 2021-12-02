@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { ButtonLink } from '@apollosproject/ui-kit';
 import { safeHandleUrl } from '@apollosproject/ui-connected';
 import ContentNodeHeader from '../ui/ContentNodeHeader';
+import OrganizationFeatureConnected from '../ui/OrganizationFeatureConnected';
 
 /* Add your custom theme definitions below. Anything that is supported in UI-Kit Theme can be
  overridden and/or customized here! */
@@ -142,6 +143,14 @@ const overrides = {
     // eslint-disable-next-line react/display-name
     HeaderComponent: () => (props) => <ContentNodeHeader {...props} />,
   },
+  'ui-kit.DefaultCard': () => ({ relatedNode, actionIcon, labelText }) => ({
+    LabelComponent:
+      actionIcon || labelText || !relatedNode?.id ? (
+        undefined
+      ) : (
+        <OrganizationFeatureConnected nodeId={relatedNode?.id} isCard />
+      ),
+  }),
 };
 
 export default {

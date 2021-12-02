@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import GET_ORGANIZATION_FEATURE from './getOrganizationFeature';
 import OrganizationFeature from './OrganizationFeature';
 
-export default function OrganizationFeatureConnected({ nodeId }) {
+export default function OrganizationFeatureConnected({
+  nodeId,
+  ...otherProps
+}) {
   const { data } = useQuery(GET_ORGANIZATION_FEATURE, {
     variables: {
       nodeId,
@@ -13,7 +16,9 @@ export default function OrganizationFeatureConnected({ nodeId }) {
 
   if (data?.getOrganizationFeature) {
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <OrganizationFeature {...data.getOrganizationFeature} />;
+    return (
+      <OrganizationFeature {...data.getOrganizationFeature} {...otherProps} />
+    );
   }
   return null;
 }
