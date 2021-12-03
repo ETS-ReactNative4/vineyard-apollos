@@ -174,44 +174,40 @@ class dataSource extends ActionAlgorithm.dataSource {
             AND i.action = 'COMPLETE'
         AND i.person_id = '${personId}'
           ORDER BY
+              i.created_at DESC,
               publish_at ASC
           LIMIT 1000
       ),
-      all_items AS (
-          SELECT
-        *
-          FROM
-              content_item c
-          WHERE
-              c.content_item_category_id = '${categoryId}'
-          ORDER BY
-              (CASE
-                    WHEN parent_id = '520871fb-feca-4f28-bfcc-cbdc26083472' THEN 1
-                    WHEN parent_id = '2f16d90c-55fb-4fff-9b5d-4e6d6738d66a' THEN 2
-                    WHEN parent_id = '0fd5a8f8-5ae2-45ac-b3ec-a184892e8f5f' THEN 3
-                    WHEN parent_id = '820a8e0d-98d8-4f54-a71e-32e190681922' THEN 4
-                    END) ASC,
-              publish_at ASC
-          LIMIT 1000
+      most_recent_completion AS (
+        SELECT * FROM completed_items LIMIT 1
       ),
       uncompleted_items AS (
-          SELECT
-              a.id,
-              a.title,
-              a.summary,
-              a.html_content,
-              a.publish_at,
-              a.apollos_id,
-              a.apollos_type,
-              a.content_item_category_id,
-              a.cover_image_id,
-              a.parent_id
-          FROM
-              all_items a
-              LEFT JOIN completed_items c ON a.id = c.id
-          WHERE
-              c.id IS NULL
-          LIMIT 1
+        SELECT
+            a.id,
+            a.title,
+            a.summary,
+            a.html_content,
+            a.publish_at,
+            a.apollos_id,
+            a.apollos_type,
+            a.content_item_category_id,
+            a.cover_image_id,
+            a.parent_id,
+            CASE
+                WHEN most_recent_completion.id IS NOT null THEN 1
+                ELSE 0
+            END as most_recent_series
+        FROM
+            content_item a
+            LEFT JOIN completed_items c ON a.id = c.id
+            LEFT JOIN most_recent_completion on most_recent_completion.parent_id = a.parent_id
+        WHERE
+            c.id IS NULL
+            AND a.content_item_category_id = '${categoryId}'
+        ORDER BY
+            most_recent_series DESC,
+            publish_at ASC
+        LIMIT 1
       )
       SELECT
           c.title parent_name,
