@@ -345,10 +345,10 @@
     formik "1.5.1"
     yup "^0.27.0"
 
-"@apollosproject/ui-connected@^2.39.1-canary.13":
-  version "2.39.1-canary.13"
-  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.39.1-canary.13.tgz#c79b78fd5d3bf16766f480c0b55c28dd8014fc6d"
-  integrity sha512-DKUaYQUYG30bvn18Q21y7hCnNn9h941tesf39Ry12Zuu9qRZoVaOHFAdZuhod5AkvpbZ1FP9iiSdKw60Ui5eqQ==
+"@apollosproject/ui-connected@^2.39.1-canary.18":
+  version "2.39.1-canary.18"
+  resolved "https://registry.yarnpkg.com/@apollosproject/ui-connected/-/ui-connected-2.39.1-canary.18.tgz#f4b31e36e333730fa0e3df7b8de9a8aff0a6df33"
+  integrity sha512-lzhSDGAKl4zLP9U+JOGhJO79f4i+F1jc94RaAwxznfafkrJUBie9/r6iGFn3dz8tGc077pPT+gmTxI99HfgYAg==
   dependencies:
     apollo-upload-client "14.1.3"
     graphql-tag "2.9.2"
