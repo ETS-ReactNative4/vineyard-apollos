@@ -11,7 +11,6 @@ import {
   withTheme,
   Icon,
   Touchable,
-  styled,
 } from '@apollosproject/ui-kit';
 import { useApolloClient } from '@apollo/client';
 import {
@@ -87,16 +86,15 @@ const HeaderRight = () => {
 
 const fontStyles = { fontFamily: 'NunitoSans-Bold' };
 
-const HomeTabComponent = styled(({ theme: styledTheme }) => ({
-  backgroundColor: styledTheme.colors.primary,
-}))(DefaultTabComponent);
-
 const HomeTabWithHeader = (props) => (
-  <HomeTabComponent
+  <DefaultTabComponent
     {...props}
     feedViewProps={{
       ListHeaderComponent: HomeTabHeader,
       contentInsetAdjustmentBehavior: 'automatic',
+      style: {
+        backgroundColor: theme.colors.primary,
+      },
     }}
   />
 );
