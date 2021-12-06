@@ -48,7 +48,7 @@ const HomeTabHeader = () => {
 
   return (
     <Background source={require('./homeimage.png')}>
-      <Themer>
+      <Themer theme={{ type: 'dark' }}>
         <StyledCard>
           <DateText>{today}</DateText>
           <GreetingText>
