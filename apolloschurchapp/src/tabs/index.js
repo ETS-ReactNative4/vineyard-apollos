@@ -94,8 +94,10 @@ const HomeTabComponent = styled(({ theme: styledTheme }) => ({
 const HomeTabWithHeader = (props) => (
   <HomeTabComponent
     {...props}
-    ListHeaderComponent={HomeTabHeader}
-    contentInsetAdjustmentBehavior="automatic"
+    feedViewProps={{
+      ListHeaderComponent: HomeTabHeader,
+      contentInsetAdjustmentBehavior: 'automatic',
+    }}
   />
 );
 // we nest stack inside of tabs so we can use all the fancy native header features
