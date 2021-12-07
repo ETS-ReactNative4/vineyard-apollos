@@ -6,13 +6,13 @@ import { named } from '@apollosproject/ui-kit';
 
 import Features from './Features';
 import BeReady from './BeReady';
-import Community from './Community';
+import Pray from './Pray';
 import GetSet from './GetSet';
 import GoServe from './GoServe';
 
 function LandingSwiper() {
   const navigation = useNavigation();
-  const slides = [Features, BeReady, GetSet, GoServe, Community];
+  const slides = [Features, BeReady, GetSet, GoServe, Pray];
 
   return (
     <OnboardingSwiper

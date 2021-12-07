@@ -143,6 +143,7 @@ const overrides = {
     // eslint-disable-next-line react/display-name
     HeaderComponent: () => (props) => <ContentNodeHeader {...props} />,
   },
+  // eslint-disable-next-line react/display-name
   'ui-kit.DefaultCard': () => ({ relatedNode, actionIcon, labelText }) => ({
     LabelComponent:
       actionIcon || labelText || !relatedNode?.id ? (
