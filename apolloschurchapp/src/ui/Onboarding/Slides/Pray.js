@@ -11,6 +11,7 @@ const Background = withTheme(({ theme }) => ({
     height: '100%',
     width: '100%',
     position: 'absolute',
+    top: '20%',
   },
   source:
     theme.type === 'light'
@@ -19,7 +20,7 @@ const Background = withTheme(({ theme }) => ({
 }))(Image);
 
 const StyledSlideContent = styled({
-  marginTop: '66%',
+  height: '33%',
 })(SlideContent);
 
 const Features = memo(({ firstName, description, ...props }) => (
