@@ -9,7 +9,7 @@ export default function LocationFeatureConnected({ nodeId }) {
     variables: {
       nodeId,
     },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
   });
 
   if (data?.getLocationFeature) {
