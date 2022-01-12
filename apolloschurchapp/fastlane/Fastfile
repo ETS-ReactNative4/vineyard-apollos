@@ -71,7 +71,7 @@ platform :ios do
       },
       reject_if_possible: true,
       run_precheck_before_submit: false,
-      app_version: get_version_number,
+      app_version: get_version_number(xcodeproj: "ios"),
     )
   end
 end
