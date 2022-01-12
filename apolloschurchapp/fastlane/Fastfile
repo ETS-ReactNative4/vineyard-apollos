@@ -71,7 +71,7 @@ platform :ios do
       },
       reject_if_possible: true,
       run_precheck_before_submit: false,
-      force: true,
+      app_version: get_version_number,
     )
   end
 end
