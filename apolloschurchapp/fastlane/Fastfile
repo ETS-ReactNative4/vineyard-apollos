@@ -42,7 +42,7 @@ def apollos_console(platform, status)
       "dataSource": "Cluster0",
       "database": "apollos",
       "collection": "deployments",
-      "filter": { "church": "River Valley" },
+      "filter": { "church": "Vineyard" },
       "update": {
           "$set": {
               platform => status,
