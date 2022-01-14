@@ -8,7 +8,6 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationService,
-  withTheme,
   useTheme,
   Icon,
   Touchable,
@@ -20,9 +19,9 @@ import {
   DefaultTabComponent,
 } from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
-import theme from '../theme';
-import createStoriesTab from '../ui/StoriesTabConnected';
-import HomeTabHeader from '../ui/HomeTabHeader';
+import customTheme from './theme';
+import createStoriesTab from './ui/StoriesTabConnected';
+import HomeTabHeader from './ui/HomeTabHeader';
 
 const HeaderLogo = () => {
   const theme = useTheme();
@@ -87,7 +86,7 @@ const HomeTabWithHeader = (props) => (
       ListHeaderComponent: HomeTabHeader,
       contentInsetAdjustmentBehavior: 'automatic',
       style: {
-        backgroundColor: theme.colors.primary,
+        backgroundColor: customTheme.colors.primary,
       },
     }}
   />
@@ -115,7 +114,7 @@ const ReadyTab = createFeatureFeedTab({
   feedName: 'READ',
   options: {
     headerLeft: ProfileButton,
-    headerTintColor: theme.colors.primary,
+    headerTintColor: customTheme.colors.primary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
     headerTitleStyle: fontStyles,
@@ -127,7 +126,7 @@ const SetTab = createFeatureFeedTab({
   feedName: 'WATCH',
   options: {
     headerLeft: ProfileButton,
-    headerTintColor: theme.colors.secondary,
+    headerTintColor: customTheme.colors.secondary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
     headerTitleStyle: fontStyles,
@@ -138,7 +137,7 @@ const GoTab = createFeatureFeedTab({
   options: {
     headerLeft: ProfileButton,
     headerRight: SearchButton,
-    headerTintColor: theme.colors.tertiary,
+    headerTintColor: customTheme.colors.tertiary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
     headerTitleStyle: fontStyles,
@@ -168,29 +167,26 @@ const TabNavigator = ({ route }) => {
   // this is only used by the tab loaded first
   // if there is a new version of the onboarding flow,
   // we'll navigate there first to show new screens
-  useEffect(
-    () => {
-      checkOnboardingStatusAndNavigate({
-        client,
-        navigation: NavigationService,
-        navigateHome: false,
-      });
-    },
-    [client]
-  );
+  useEffect(() => {
+    checkOnboardingStatusAndNavigate({
+      client,
+      navigation: NavigationService,
+      navigateHome: false,
+    });
+  }, [client]);
 
   let activeColor;
   const colorScheme = useColorScheme();
 
   switch (getFocusedRouteNameFromRoute(route)) {
     case 'Ready':
-      activeColor = theme.colors.primary;
+      activeColor = customTheme.colors.primary;
       break;
     case 'Set':
-      activeColor = theme.colors.secondary;
+      activeColor = customTheme.colors.secondary;
       break;
     case 'Go':
-      activeColor = theme.colors.tertiary;
+      activeColor = customTheme.colors.tertiary;
       break;
     default:
       if (colorScheme === 'light') {
