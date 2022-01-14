@@ -1,6 +1,6 @@
 {
   "name": "GoDoGood",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "engines": {
     "node": ">=14"
@@ -16,6 +16,8 @@
     "generate-stories": "rnstl --searchDir ./src --pattern **/*.stories.js",
     "lint": "eslint ./src --ext .js",
     "postinstall": "jetify && yarn pods",
+    "bump": "yarn version --patch",
+    "postversion": "react-native-version --amend --never-increment-build && git push --follow-tags",
     "pods": "(bundle install && cd ios && bundle exec pod install --repo-update)",
     "start": "yarn start:dev",
     "start:dev": "yarn generate-stories && node ./scripts/get-introspection-data.js && react-native start",
