@@ -26,13 +26,13 @@ import {
   BinaryFiles,
   FeatureFeed,
   Event,
-  PrayerRequest,
   Person as RockPerson,
   ContentItem as RockContentItem,
   Campus as RockCampus,
   ContentChannel,
   Feature as RockFeature,
   ActionAlgorithm as RockActionAlgorithm,
+  PrayerRequest as RockPrayerRequest,
 } from '@apollosproject/data-connector-rock';
 
 import {
@@ -68,6 +68,7 @@ import {
   OneSignal,
   PostgresDefaultCampusOverride,
   RockDefaultCampusOverride,
+  PrayerRequest,
 } from './rockWithPostgres';
 
 const postgresContentModules = {
@@ -80,10 +81,14 @@ const postgresContentModules = {
   ContentItem: PostgresContentItem,
   ContentItemsConnection,
   ContentChannel: ContentItemCategory,
-  PrayerRequest: PostgresPrayerRequest,
   RockCampus: { dataSource: RockCampus.dataSource },
   Campus,
   PostgresDefaultCampusOverride,
+  RockPrayerRequest: {
+    dataSource: RockPrayerRequest.dataSource,
+  },
+  PostgresPrayerRequest,
+  PrayerRequest,
 };
 
 const rockContentModules = {
@@ -93,7 +98,6 @@ const rockContentModules = {
   Feature: RockFeature,
   ContentItem: RockContentItem,
   ContentChannel,
-  PrayerRequest,
   PostgresCampus: {
     // essentially everything but the resolvers
     dataSource: Campus.dataSource,
@@ -102,6 +106,7 @@ const rockContentModules = {
   },
   Campus: RockCampus,
   RockDefaultCampusOverride,
+  PrayerRequest: RockPrayerRequest,
 };
 
 const data = {

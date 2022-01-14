@@ -68,7 +68,6 @@ const apolloServer = new ApolloServer({
         cache: new BaseRedisCache({
           client: new Redis(
             process.env.REDIS_URL,
-
             {
               ...(process.env.REDIS_URL.includes('rediss')
                 ? {

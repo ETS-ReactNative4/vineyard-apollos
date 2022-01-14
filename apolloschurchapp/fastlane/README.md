@@ -31,6 +31,14 @@ Generate new provisioning profiles and certificates for app and push notificatio
 
 Push a new internal build to TestFlight
 
+### ios beta
+
+```sh
+[bundle exec] fastlane ios beta
+```
+
+Promote the most recent TestFlight build to external beta
+
 ### ios production
 
 ```sh
@@ -51,6 +59,22 @@ Promote the most recent Testflight version to production
 ```
 
 Deploy a new version to the Google Play
+
+### android beta
+
+```sh
+[bundle exec] fastlane android beta
+```
+
+Promote current build to beta
+
+### android production
+
+```sh
+[bundle exec] fastlane android production
+```
+
+Promote current build to production
 
 ----
 
