@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View, useColorScheme } from 'react-native';
 import {
@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationService,
   withTheme,
+  useTheme,
   Icon,
   Touchable,
 } from '@apollosproject/ui-kit';
@@ -19,69 +20,62 @@ import {
   DefaultTabComponent,
 } from '@apollosproject/ui-connected';
 import { checkOnboardingStatusAndNavigate } from '@apollosproject/ui-onboarding';
-// import Connect from './connect';
 import theme from '../theme';
 import createStoriesTab from '../ui/StoriesTabConnected';
 import HomeTabHeader from '../ui/HomeTabHeader';
-import tabBarIcon from './tabBarIcon';
 
-const HeaderLogo = withTheme(() => ({
-  size: 24,
-  name: 'brand-icon',
-}))(Icon);
-
-const SearchIcon = withTheme(({ theme: { colors, sizing: { baseUnit } } }) => ({
-  name: 'search',
-  size: baseUnit * 2,
-  fill: colors.tertiary,
-}))(Icon);
-
-const SearchButton = ({ onPress }) => (
-  <Touchable onPress={onPress}>
-    <SearchIcon />
-  </Touchable>
-);
-
-SearchButton.propTypes = {
-  onPress: PropTypes.func,
+const HeaderLogo = () => {
+  const theme = useTheme();
+  return (
+    <Icon
+      name="brand-icon"
+      size={theme.sizing.baseUnit * 1.5}
+      fill={theme.colors.primary}
+    />
+  );
 };
 
-const Avatar = withTheme(() => ({
-  size: 'xsmall',
-}))(UserAvatarConnected);
-
-const ProfileButton = ({ onPress }) => (
-  <Touchable onPress={onPress}>
-    <View>
-      <Avatar />
-    </View>
-  </Touchable>
-);
-
-ProfileButton.propTypes = {
-  onPress: PropTypes.func,
-};
-
-const HeaderLeft = () => {
+const ProfileButton = () => {
   const navigation = useNavigation();
   return (
-    <ProfileButton
+    <Touchable
       onPress={() => {
         navigation.navigate('UserSettingsNavigator');
       }}
-    />
+    >
+      <View>
+        <UserAvatarConnected size="xsmall" />
+      </View>
+    </Touchable>
   );
 };
-const HeaderCenter = () => <HeaderLogo source={require('./wordmark.png')} />;
-const HeaderRight = () => {
+
+const SearchButton = () => {
   const navigation = useNavigation();
+  const theme = useTheme();
   return (
-    <SearchButton
+    <Touchable
       onPress={() => {
         navigation.navigate('Search');
       }}
-    />
+    >
+      <Icon
+        name="search"
+        size={theme.sizing.baseUnit * 2}
+        fill={theme.colors.primary}
+      />
+    </Touchable>
   );
+};
+
+const tabBarIcon = (name) => {
+  function TabBarIcon({ color }) {
+    return <Icon name={name} fill={color} size={24} />;
+  }
+  TabBarIcon.propTypes = {
+    color: PropTypes.string,
+  };
+  return TabBarIcon;
 };
 
 const fontStyles = { fontFamily: 'NunitoSans-Bold' };
@@ -102,8 +96,8 @@ const HomeTabWithHeader = (props) => (
 const HomeTab = createFeatureFeedTab({
   options: {
     headerHideShadow: true,
-    headerCenter: HeaderCenter,
-    headerLeft: HeaderLeft,
+    headerCenter: HeaderLogo,
+    headerLeft: ProfileButton,
     headerLargeTitle: false,
     headerStyle: {
       blurEffect: 'systemChromeMaterial',
@@ -120,7 +114,7 @@ const ReadyTab = createFeatureFeedTab({
   tabName: 'Be Ready',
   feedName: 'READ',
   options: {
-    headerLeft: HeaderLeft,
+    headerLeft: ProfileButton,
     headerTintColor: theme.colors.primary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
@@ -132,7 +126,7 @@ const SetTab = createFeatureFeedTab({
   tabName: 'Get Set',
   feedName: 'WATCH',
   options: {
-    headerLeft: HeaderLeft,
+    headerLeft: ProfileButton,
     headerTintColor: theme.colors.secondary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
@@ -142,8 +136,8 @@ const SetTab = createFeatureFeedTab({
 
 const GoTab = createFeatureFeedTab({
   options: {
-    headerLeft: HeaderLeft,
-    headerRight: HeaderRight,
+    headerLeft: ProfileButton,
+    headerRight: SearchButton,
     headerTintColor: theme.colors.tertiary,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
@@ -160,7 +154,7 @@ const StoriesTab = createStoriesTab({
   tabName: 'Stories',
   feedName: 'STORIES',
   options: {
-    headerLeft: HeaderLeft,
+    headerLeft: ProfileButton,
     headerLargeTitleStyle: fontStyles,
     headerBackTitleStyle: fontStyles,
     headerTitleStyle: fontStyles,

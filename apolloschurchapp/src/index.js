@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-handler-names */
 
-import React from 'react';
 import { StatusBar } from 'react-native';
 import {
   NavigationContainer,
@@ -28,6 +27,7 @@ import {
   ContentSingleConnected,
   ContentFeedConnected,
   SearchScreenConnected,
+  UserSettingsConnected,
 } from '@apollosproject/ui-connected';
 
 import Onboarding from './ui/Onboarding';
@@ -35,8 +35,6 @@ import Providers from './Providers';
 import LandingSwiper from './ui/Onboarding/Slides/LandingSwiper';
 import Tabs from './tabs';
 import customTheme, { customIcons } from './theme';
-
-import UserSettingsNavigator from './user-settings';
 
 enableScreens(); // improves performance for react-navigation
 
@@ -78,11 +76,6 @@ const ThemedNavigationContainer = withTheme(({ theme, ...props }) => ({
 }))(({ containerRef, ...props }) => (
   <NavigationContainer ref={containerRef} {...props} />
 ));
-
-const LandingToAuth = () => {
-  const navigation = useNavigation();
-  return <LandingSwiper onPressPrimary={() => navigation.navigate('Auth')} />;
-};
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -134,7 +127,11 @@ const App = () => (
                 stackPresentation: 'push',
               }}
             />
-            <Screen name="Location" component={Location} />
+            <Screen
+              name="Location"
+              component={Location}
+              options={{ title: 'Campuses' }}
+            />
             <Screen
               name="Passes"
               component={Passes}
@@ -148,11 +145,11 @@ const App = () => (
                 stackPresentation: 'push',
               }}
             />
-            <Screen name="LandingScreen" component={LandingToAuth} />
+            <Screen name="LandingScreen" component={LandingSwiper} />
             <Screen name="Search" component={SearchScreenConnected} />
             <Screen
               name="UserSettingsNavigator"
-              component={UserSettingsNavigator}
+              component={UserSettingsConnected}
             />
           </Navigator>
         </Providers>
