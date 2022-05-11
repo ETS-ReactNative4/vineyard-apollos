@@ -2,15 +2,17 @@ name: Deploy
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
-
   api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Check For API Changes
+        run: if [[ $(git diff HEAD~1 apollos-church-api) == "" ]]; then exit; fi
 
       # heroku only uses yarn if there's a yarn.lock file
       - name: Use Yarn
@@ -20,7 +22,6 @@ jobs:
           git config --global user.name "Apollos Admin"
           git add apollos-church-api/yarn.lock
           git commit -am "added yarn.lock"
-
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.5.6
         with:
@@ -37,33 +38,36 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+    - name: Check For App Changes
+      run: if [[ $(git diff HEAD~1 apolloschurchapp) == "" ]]; then exit; fi
 
-      - name: Install Bundler
-        run: gem install bundler
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
 
-      - name: Decrypt Environment Variables and Apple API Key
-        run: (npx @apollosproject/apollos-cli secrets -d ${{ secrets.ENCRYPTION_PASSWORD }})
+    - name: Install Bundler
+      run: gem install bundler
 
-      - run: cp .env.shared .env
+    - name: Decrypt Environment Variables and Apple API Key
+      run: (npx @apollosproject/apollos-cli secrets -d ${{ secrets.ENCRYPTION_PASSWORD }})
 
-      - name: Install Dependencies
-        run: yarn config set network-timeout 300000 && yarn
+    - run: cp .env.shared .env
 
-      - name: Generate Fragment Types
-        run: node ./scripts/get-introspection-data.js
-        env:
-          APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+    - name: Install Dependencies
+      run: yarn config set network-timeout 300000 && yarn
 
-      - name: Fastlane Deploy
-        run: bundle exec fastlane ios deploy
+    - name: Generate Fragment Types
+      run: node ./scripts/get-introspection-data.js
+      env:
+        APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+
+    - name: Fastlane Deploy
+      run: bundle exec fastlane ios deploy
 
   android:
     defaults:
@@ -73,30 +77,33 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+    - name: Check For App Changes
+      run: if [[ $(git diff HEAD~1 apolloschurchapp) == "" ]]; then exit; fi
 
-      - name: Install Bundler
-        run: gem install bundler
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
 
-      - name: Decrypt Environment Variables and Keystore
-        run: (npx @apollosproject/apollos-cli secrets -d ${{ secrets.ENCRYPTION_PASSWORD }})
+    - name: Install Bundler
+      run: gem install bundler
 
-      - run: cp .env.shared .env
+    - name: Decrypt Environment Variables and Keystore
+      run: (npx @apollosproject/apollos-cli secrets -d ${{ secrets.ENCRYPTION_PASSWORD }})
 
-      - name: Install Dependencies
-        run: yarn config set network-timeout 300000 && yarn
+    - run: cp .env.shared .env
 
-      - name: Generate Fragment Types
-        run: node ./scripts/get-introspection-data.js
-        env:
-          APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+    - name: Install Dependencies
+      run: yarn config set network-timeout 300000 && yarn
 
-      - name: Fastlane Deploy
-        run: bundle exec fastlane android deploy
+    - name: Generate Fragment Types
+      run: node ./scripts/get-introspection-data.js
+      env:
+        APP_DATA_URL: ${{ secrets.APP_DATA_URL }}
+
+    - name: Fastlane Deploy
+      run: bundle exec fastlane android deploy
